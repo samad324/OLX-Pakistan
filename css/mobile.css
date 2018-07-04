@@ -1,0 +1,21 @@
+/* .text-title{
+    font-size: 9px !important;
+}
+.logo{
+    width: 36px;
+    margin-top: 0px;
+}*/
+.navBar{
+    height: 50px;
+    width: 100%;
+}
+
+.toggleDiv{
+    display: inline-block !important;
+}
+.btnDiv{
+    display: none !important;
+}
+.searchDiv{
+    display: none !important;
+}

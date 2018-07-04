@@ -1,0 +1,163 @@
+.d-flex{
+    display: flex;
+}
+.catDiv{
+    margin-bottom: 0;
+}
+.text-center{
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+.d-row{
+    flex-direction: row;
+}
+.d-col{
+    flex-direction: column;
+}
+.d-start{
+    justify-content: flex-start
+}
+.d-end{
+    justify-content: flex-end
+}
+.d-space-between{
+    justify-content: space-between
+}
+.d-justify-center{
+    justify-content: center;
+}
+.pd-1{
+    padding-bottom: 10px !important;
+}
+.toggle{
+    font-size: 30px;
+    color: #FD8924;
+    border: 1px solid #FD8924;
+    border-radius: 2px;
+    padding: 14px;
+}
+.toggleDiv{
+    display: none !important;
+}
+.d-space-around{
+    justify-content: space-around
+}
+.text-orange{
+    color: #FD8924;
+}
+.bg-oragne{
+    background-color: #FD8924;
+}
+.text-black{
+    color: #2B2B2B
+}
+.bg-black{
+    background-color: #2B2B2B
+}
+.bd-white{
+    background-color: #fff !important;
+}
+.text-grey{
+    color: rgba(43, 43, 43, 0.479);
+}
+.d-align-center{
+    align-items: center
+}
+.border{
+    border: 1px solid rgba(43, 43, 43, 0.479);
+    border-radius: 4px;
+}
+.navBar{
+    width: 60px;
+}
+.w-10{
+    width: 10%;
+}
+.ico{
+    color: grey;
+}
+.w-20{
+    width: 20%
+}
+.w-30{
+    width: 30%;
+}
+.w-40{
+    width: 40%
+}
+.w-15{
+    width: 15%;
+}
+.w-50{
+    width: 50%;
+}
+.w-60{
+    width: 60%;
+}
+.w-70{
+    width: 70%
+}
+.w-80{
+    width: 80%;
+}
+.w-90{
+    width: 90%
+}
+.logo{
+    width: 60px;
+}
+.cats{
+    width: 100px
+}
+.divname{
+    height: 60px;
+}
+.w-25{
+    width: 25%
+}
+.btn-orange{
+    background-color: #FD8924;
+    color: white;
+}
+.btn-white{
+    background-color: #fff;
+    color: #2F73D8;
+    border: 1px solid rgba(128, 128, 128, 0.315);
+}
+.w-150{
+    width: 150px;
+}
+.w-130{
+    width: 130px;
+}
+.font-bold{
+    font-weight: bold;
+}
+.btn-primary{
+    border: 2px solid #fff;
+}
+.btn-white:hover{
+    color: #FD8924;
+}
+.btn-orange:hover{
+    opacity: 0.8;
+}
+
+.h-100{
+    height: 100px !important;
+}
+.divSearch{
+    background-color: #2F73D8;
+}
+.bg-blach-light{
+    background-color: rgba(0, 0, 0, 0.377);
+}
+.h-80{
+    height:80px;
+}
+.m-auto{
+    margin: auto;
+}
+.d-self-center{
+    align-self: center;
+}
