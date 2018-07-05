@@ -19,43 +19,72 @@
 
 
 
-  <div class="d-flex flex-row justify-content-between navBar">
+    <div class="d-flex flex-row justify-content-between navBar">
 
-            <div class="d-flex flex-row">
-                <div class="align-self-center">
-                    <img src="../../images/icon.png" alt="OLX Pakistan - Free Classsified in Pakistan" class="icon">
-                </div>
-                <div class="align-self-center ml-3 mobileDiv">
-                    <h5>Pakistan's Largest Marketplace</h5>
-                </div>
+        <div class="d-flex flex-row">
+            <div class="align-self-center">
+                <img src="../../images/icon.png" alt="OLX Pakistan - Free Classsified in Pakistan" class="icon">
             </div>
-            <div class="d-flex flex-row ">
-                <div class="align-self-center mobileDiv">
-                    <button class="btn btn-white">
-                        <i class="fa fa-user"></i>
-                        <span class="text-bold">My Account</span>
-                    </button>
-                </div>
-                <div class="align-self-center ml-2">
-                    <button class="btn btn-orange ml-2">
-                        <span class="text-bold">Submit an Ad</span>
-                    </button>
-                </div>
+            <div class="align-self-center ml-3 mobileDiv">
+                <h5>Pakistan's Largest Marketplace</h5>
             </div>
-
+        </div>
+        <div class="d-flex flex-row ">
+            <div class="align-self-center mobileDiv">
+                <button class="btn btn-white">
+                    <i class="fa fa-user"></i>
+                    <span class="text-bold">My Account</span>
+                </button>
+            </div>
+            <div class="align-self-center ml-2">
+                <button class="btn btn-orange ml-2">
+                    <span class="text-bold">Submit an Ad</span>
+                </button>
+            </div>
         </div>
 
+    </div>
 
-    <div class="container mt-5 ml-5">
+
+    <div class="container m-auto mt-5">
         <form onsubmit="return LoginUser(event)">
             <span class="mt-3 d-inline-block">Email:</span>
             <input type="email" class="form-control" id="email">
             <span class="mt-3 d-inline-block">Passowrd:</span>
             <input type="password" id="password" class="form-control">
-            <button class="btn btn-primary float-right mt-4" type="submit" id="btn" >Log In</button>
+            <button class="btn btn-primary float-right mt-4" type="submit" id="btn">Log In</button>
         </form>
     </div>
 
+
+
+
+
+    <footer class=" ">
+        <div class="container mt-5">
+            <table>
+                <tr>
+                    <td rowspan="4">
+                        <img src="images/logo.png" class="icon ml-5 ">
+                    </td>
+                    <td>Location maps</td>
+                    <td>Terms of Use</td>
+                    <td>Who we are</td>
+                </tr>
+                <tr>
+                    <td>Popular searches</td>
+                    <td>Help and Contact us</td>
+                    <td>join OLX</td>
+                </tr>
+                <tr>
+                    <td>Sitemap</td>
+                    <td></td>
+                    <td>Happy OLXers</td>
+                </tr>
+            </table>
+
+        </div>
+    </footer>
 
 
     <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>

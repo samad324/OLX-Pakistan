@@ -24,8 +24,8 @@ function LoginUser(event){
     `
     firebase.auth().signInWithEmailAndPassword(email,passsord)
         .then(function(res){
-            console.log(res)
             btn.innerHTML = "login"
+            console.log(res)
         }).catch(function(err){
             console.log(err.message)
         })
