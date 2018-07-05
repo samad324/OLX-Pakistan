@@ -1,0 +1,6 @@
+@media(max-width:785px){
+    .container{
+        width: 80% !important;
+        margin: auto !important;
+    }
+}

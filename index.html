@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" media="(max-width: 785px)" href="css/mobile.css">
+    <link rel="stylesheet" href="css/style (2).css">
     <link rel="stylesheet" media="(min-width: 786px)" href="css/web.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
         crossorigin="anonymous">
@@ -18,36 +19,37 @@
 
     <div class="container">
 
-        <div class="d-flex d-row d-space-between navBar w-100">
-            <div class="d-flex d-row d-align-center">
-                <div>
-                    <img src="images/logo.png" class="logo mt-2" alt="OLX Pakistan">
+        <div class="d-flex flex-row justify-content-between navBar">
+
+            <div class="d-flex flex-row">
+                <div class="align-self-center">
+                    <img src="images/icon.png" alt="OLX Pakistan - Free Classsified in Pakistan" class="icon">
                 </div>
-                <div class="d-align-center divname mt-4 ml-3">
-                    <h5 class="text-black text-title">Pakistan's Largest Marketplace</h5>
+                <div class="align-self-center ml-3 mobileDiv">
+                    <h5>Pakistan's Largest Marketplace</h5>
                 </div>
             </div>
-            <div class="d-flex d-row btnDiv">
-                <div>
-                    <button class="btn btn-white mt-3 w-150 font-bold">
+            <div class="d-flex flex-row ">
+                <div class="align-self-center mobileDiv">
+                    <button class="btn btn-white">
                         <i class="fa fa-user"></i>
-                        My Account
+                        <span class="text-bold">My Account</span>
                     </button>
                 </div>
-                <div>
-                    <button class="btn btn-orange mt-3 ml-3 w-150 font-bold">Submit an Ad</button>
+                <div class="align-self-center ml-2">
+                    <button class="btn btn-orange ml-2">
+                        <span class="text-bold">Submit an Ad</span>
+                    </button>
                 </div>
             </div>
-            <div class=" d-flex d-align-center mr-3 toggleDiv">
-                <i class=" toggle fa fa-align-justify"></i>
-            </div>
+
         </div>
 
 
         <div class=" h-100 divSearch d-flex d-align-center">
-            <div class="d-flex d-row m-auto w-90 bg-blach-light d-align-center border h-80  ">
+            <div class="d-flex d-row m-auto w-90 bg-blach-light d-align-center border h-80 fieldsDiv ">
 
-                <div class="input-group ml-3 w-30">
+                <div class="web-fields input-group ml-3 w-30">
                     <div class="input-group-prepend">
                         <span class="input-group-text bg-white ico" id="basic-addon1">
                             <i class="fa fa-map-marker-alt"></i>
@@ -55,17 +57,26 @@
                     </div>
                     <input type="text" class="form-control" placeholder="All Pakistan" aria-label="Username" aria-describedby="basic-addon1">
                 </div>
-                <div class="input-group ml-3 w-50">
+                <div class="web-fields input-group ml-3 w-50">
                     <div class="input-group-prepend">
                         <span class="input-group-text bg-white ico" id="basic-addon1">
                             <i class="fa fa-search"></i>
                         </span>
                     </div>
-                    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                    <input type="text" class="form-control" placeholder="Search An Ad" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+
+                <div class="input-group mobile-fields ml-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-white ico" id="basic-addon1">
+                            <i class="fa fa-search"></i>
+                        </span>
+                    </div>
+                    <input type="text" class="form-control" placeholder="Search An Ad" aria-label="Username" aria-describedby="basic-addon1">
                 </div>
 
                 <div class="ml-3">
-                    <button class="btn btn-primary w-130">
+                    <button class="btn btn-primary w-130 mr-2">
                         <i class="fa fa-search mr-2"></i>
                         <span class="font-bold">Search</span>
                     </button>
@@ -82,65 +93,61 @@
         </div>
 
 
-        <div class="container">
+        <div class="categories mt-4">
 
 
             <div class="row">
-                <div class="col-lg-3 col-md-2 col-sm-6">
+                <div class="col-lg-2 col-md-2 col-sm-4">
                     <img src="images/cat/property.png" class="w-100">
                     <p class="text-center">Property For Sale</p>
                 </div>
-                <div class="col-lg-3 col-md-2 col-sm-6">
-                    <img src="images/cat/property.png" class="w-100">
-                    <p class="text-center">Property For Sale</p>
+                <div class="col-lg-2 col-md-2 col-sm-4">
+                    <img src="images/cat/property2.png" class="w-100">
+                    <p class="text-center">Property For Rent</p>
                 </div>
-                <div class="col-lg-3 col-md-2 col-sm-6">
-                    <img src="images/cat/property.png" class="w-100">
-                    <p class="text-center">Property For Sale</p>
+                <div class="col-lg-2 col-md-2 col-sm-4">
+                    <img src="images/cat/mobile.png" class="w-100">
+                    <p class="text-center">Mobiles</p>
                 </div>
-                <div class="col-lg-3 col-md-2 col-sm-6">
-                    <img src="images/cat/property.png" class="w-100">
-                    <p class="text-center">Property For Sale</p>
+                <div class="col-lg-2 col-md-2 col-sm-4">
+                    <img src="images/cat/industry.png" class="w-100">
+                    <p class="">Bussiness industrial & Agriculture</p>
                 </div>
-                <div class="col-lg-3 col-md-2 col-sm-6">
-                    <img src="images/cat/property.png" class="w-100">
-                    <p class="text-center">Property For Sale</p>
+                <div class="col-lg-2 col-md-2 col-sm-4">
+                    <img src="images/cat/electronic.jpg" class="w-100">
+                    <p class="text-center">Electronics</p>
                 </div>
-                <div class="col-lg-3 col-md-2 col-sm-6">
-                    <img src="images/cat/property.png" class="w-100">
-                    <p class="text-center">Property For Sale</p>
+                <div class="col-lg-2 col-md-2 col-sm-4">
+                    <img src="images/cat/dog.png" class="w-100">
+                    <p class="text-center">Animals</p>
                 </div>
-                <div class="col-lg-3 col-md-2 col-sm-6">
-                    <img src="images/cat/property.png" class="w-100">
-                    <p class="text-center">Property For Sale</p>
+                <div class="col-lg-2 col-md-2 col-sm-4">
+                    <img src="images/cat/car.png" class="w-100">
+                    <p class="text-center">Verhicals</p>
                 </div>
-                <div class="col-lg-3 col-md-2 col-sm-6">
-                    <img src="images/cat/property.png" class="w-100">
-                    <p class="text-center">Property For Sale</p>
+                <div class="col-lg-2 col-md-2 col-sm-4">
+                    <img src="images/cat/bike.png" class="w-100">
+                    <p class="text-center">Bikes</p>
                 </div>
-                <div class="col-lg-3 col-md-2 col-sm-6">
-                    <img src="images/cat/property.png" class="w-100">
-                    <p class="text-center">Property For Sale</p>
+                <div class="col-lg-2 col-md-2 col-sm-4">
+                    <img src="images/cat/book.jpg" class="w-100">
+                    <p class="text-center">Books, Sports & Hobbies</p>
                 </div>
-                <div class="col-lg-3 col-md-2 col-sm-6">
-                    <img src="images/cat/property.png" class="w-100">
-                    <p class="text-center">Property For Sale</p>
+                <div class="col-lg-2 col-md-2 col-sm-4">
+                    <img src="images/cat/beauty.jpg" class="w-100">
+                    <p class="text-center">Beauty & Fashion</p>
                 </div>
-                <div class="col-lg-3 col-md-2 col-sm-6">
-                    <img src="images/cat/property.png" class="w-100">
-                    <p class="text-center">Property For Sale</p>
+                <div class="col-lg-2 col-md-2 col-sm-4">
+                    <img src="images/cat/battery.png" class="w-100">
+                    <p class="text-center">Furniture & Home Decor</p>
                 </div>
-                <div class="col-lg-3 col-md-2 col-sm-6">
-                    <img src="images/cat/property.png" class="w-100">
-                    <p class="text-center">Property For Sale</p>
+                <div class="col-lg-2 col-md-2 col-sm-4">
+                    <img src="images/cat/job.png" class="w-100">
+                    <p class="text-center">Jobs</p>
                 </div>
-                <div class="col-lg-3 col-md-2 col-sm-6">
-                    <img src="images/cat/property.png" class="w-100">
-                    <p class="text-center">Property For Sale</p>
-                </div>
-                <div class="col-lg-3 col-md-2 col-sm-6">
-                    <img src="images/cat/property.png" class="w-100">
-                    <p class="text-center">Property For Sale</p>
+                <div class="col-lg-2 col-md-2 col-sm-4">
+                    <img src="images/cat/kart.png" class="w-100">
+                    <p class="text-center">Kids</p>
                 </div>
 
             </div>
