@@ -54,3 +54,6 @@ mobileDiv{
 .mobile-fields{
     width: 65% !important;
 }
+.footer{
+    display: none !important;
+}
