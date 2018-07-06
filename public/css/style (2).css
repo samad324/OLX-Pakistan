@@ -1,0 +1,94 @@
+.navBar{
+    height: 80px;
+    width: 80%;
+    margin: auto;
+}
+.icon{
+    width: 60px;
+}
+.btn-white{
+    background-color: #fff;
+    color: #2F73D8;
+    border: 0.5px solid rgb(226, 226, 226);
+    width: 152px;
+    height: 42px;
+}
+.btn-white:hover{
+    color: #FF8300;
+}
+.text-bold{
+    font-weight: bold;
+}
+.btn-orange{
+    background-color: #FF8300;
+    color: #FFF;
+    width: 152px;
+    height: 42px;
+}
+.btn-orange:hover{
+    opacity: 0.8;
+}
+
+.form{
+    width: 70%;
+    margin: auto;
+}
+.inpDivs{
+    border: 0.5px solid rgb(226, 226, 226);
+    border-radius: 4px;
+    width: 100%;
+    height: 400px;
+}
+.inps{
+    width: 60%;
+}
+.dis{
+    widows: 40%;
+}
+.border{
+    border: 5px sold rgb(226, 226, 226);
+    height: 60%;
+    margin-top: 30px;
+}
+.title{
+    width: 35%;
+}
+.fields{
+    widows: 65%;
+}
+input{
+    width: 260px;
+    height: 30px;
+}
+
+
+@media(max-width:992px){
+    .border{
+        display: none
+    }
+    .title{
+        display: none;
+    }
+    .fields{
+        width: 100%;
+    }
+    input{
+        width: 260px;
+        height: 30px;
+    }
+    .inps{
+        width: 100%;
+    }
+    .dis{
+        display: none;
+    }
+}
+
+.pass{
+    margin-right: 0;
+}
+@media(max-width:1200px) and (min-width:993px){
+    .little{
+        margin-left: 30px;
+    }
+}

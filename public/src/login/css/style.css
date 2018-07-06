@@ -1,0 +1,22 @@
+@media(max-width:785px){
+    .container{
+        width: 80% !important;
+        margin: auto !important;
+    }
+}
+
+.mt-5{
+    margin-top: 40px !important;
+}
+
+footer{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 300px;
+    width: 100% !important;
+    border-top: 0.5px solid rgb(231, 231, 231); 
+}
+.loadingImg{
+    width: 16px;
+}

@@ -11,12 +11,11 @@
     <link rel="stylesheet" media="(max-width:785px)" href="../../css/mobile.css">
     <link rel="stylesheet" media="(min-width:786px)" href="../../css/web.css">
     <link rel="stylesheet" href="../../css/style (2).css">
-    <link rel="stylesheet" media="(min-width:786px)" href="css/style.css">
-    <link rel="stylesheet" media="(max-width: 785px)" href="css/mobile.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="../../images/icon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
         crossorigin="anonymous">
-    <title id="title"></title>
+    <title>Log in</title>
 </head>
 
 <body>
@@ -33,13 +32,14 @@
                 <h5>Pakistan's Largest Marketplace</h5>
             </div>
         </div>
-        <div class="d-flex flex-row m-3">
-            <div class="align-self-center logBtn">
-                <button class="btn btn-white" onclick="toLogin()">
-                    <span class="text-bold">Login</span>
+        <div class="d-flex flex-row ">
+            <div class="align-self-center mobileDiv">
+                <button class="btn btn-white" onclick="toreg()">
+                    <i class="fa fa-pencil-alt"></i>
+                    <span class="text-bold">Register</span>
                 </button>
             </div>
-            <div class="align-self-center ml-2" onclick = "toSubmit()">
+            <div class="align-self-center ml-2">
                 <button class="btn btn-orange ml-2">
                     <span class="text-bold">Submit an Ad</span>
                 </button>
@@ -49,54 +49,21 @@
     </div>
 
 
-    <div class=" h-100 divSearch d-flex d-align-center">
-        <div class="d-flex d-row m-auto w-90 bg-blach-light d-align-center border h-80 fieldsDiv ">
-
-            <div class="web-fields input-group ml-3 w-30">
-                <div class="input-group-prepend">
-                    <span class="input-group-text bg-white ico" id="basic-addon1">
-                        <i class="fa fa-map-marker-alt"></i>
-                    </span>
-                </div>
-                <input type="text" class="form-control" placeholder="All Pakistan" aria-label="Username" aria-describedby="basic-addon1">
-            </div>
-            <div class="mobile-fields input-group ml-3 w-50">
-                <div class="input-group-prepend">
-                    <span class="input-group-text bg-white ico" id="basic-addon1">
-                        <i class="fa fa-search"></i>
-                    </span>
-                </div>
-                <input type="text" class="form-control" placeholder="Search An Ad" aria-label="Username" aria-describedby="basic-addon1">
-            </div>
-
-            <div class="ml-3">
-                <button class="btn btn-primary w-130 mr-2">
-                    <i class="fa fa-search mr-2"></i>
-                    <span class="font-bold">Search</span>
-                </button>
-            </div>
-
-        </div>
-
+    <div class="container m-auto mt-5">
+        <form onsubmit="return LoginUser(event)">
+            <span class="mt-3 d-inline-block">Email:</span>
+            <input type="email" class="form-control" id="email">
+            <span class="mt-3 d-inline-block">Passowrd:</span>
+            <input type="password" id="password" class="form-control">
+            <span class="mt-4 d-inline-block needReg">
+                <a href="../register/register.html">
+                    <i class="fa fa-pencil-alt">Need Registration?</i>
+                </a>
+            </span>
+            <button class="btn btn-primary float-right mt-4 text-bold" type="submit" id="btn">Log In</button>
+        </form>
     </div>
 
-
-
-
-
-
-    <div id="results" class="mt-5">
-        <div class="container result my-2 d-flex flex-row">
-            <div class="adImg align-self-center d-flex">
-                <img src="images/logo.png" class="w-80 align-self-center m-auto">
-            </div>
-            <div class="ml-4">
-                <h5 id="title" class="mb-0">Car for sale</h5>
-                <p class="text-muted mb-0">Category</p>
-                <small class="text-muted">location</small>
-            </div>
-        </div>
-    </div>
 
 
 
@@ -154,26 +121,10 @@
     </footer>
 
 
-
-
-
-
-
-
     <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
-    <script>
-        // Initialize Firebase
-        var config = {
-            apiKey: "AIzaSyD5ALJ3Pvfn86ybcI6-uWUuKn8xBL7Fweo",
-            authDomain: "olxpakistanpwa.firebaseapp.com",
-            databaseURL: "https://olxpakistanpwa.firebaseio.com",
-            projectId: "olxpakistanpwa",
-            storageBucket: "olxpakistanpwa.appspot.com",
-            messagingSenderId: "573103718935"
-        };
-        firebase.initializeApp(config);
-    </script>
+    <script src="../../js/bootstrap.min.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/firebase.js"></script>
 </body>
 
 </html>
