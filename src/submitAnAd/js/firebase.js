@@ -1,6 +1,8 @@
 
-
 const firestore = firebase.firestore();
+const settings = {/* your settings... */ timestampsInSnapshots: true };
+firestore.settings(settings);
+
 const storage = firebase.storage();
 const auth = firebase.auth();
 console.log("storage", storage);
@@ -75,9 +77,16 @@ function submitAnAdd(event) {
             pics: picsUrl,
             adderId: currenntUser.uid
         };
+
         firestore.collection(category).add(data)
-            .then(function(DocRef){
-                console.log("Data Added!!" , DocRef)
+            .then(function (DocRef) {
+                firestore.collection("ads").doc((Math.random()).toString()).collection(category)
+                    .add({
+                        adTitle: adTitle,
+                        category: category,
+                        DocRef: DocRef.id
+                    })
+                console.log("Data Added!!", DocRef)
             })
     })
 

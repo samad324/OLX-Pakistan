@@ -44,7 +44,9 @@ function registerUser(event) {
         btnSubmit.innerHTML = "Register";
         firestore.collection("users").add(
             data
-        ) 
+        ).then(function(docRef){
+            window.location = "../../index.html"
+        })
     })
         .catch(function (error) {
             // Handle Errors here.
@@ -52,4 +54,9 @@ function registerUser(event) {
             var errorMessage = error.message;
             alert(error.message)
         });
+}
+
+
+function toLogin(){
+    window.location = "../login/login.html"
 }

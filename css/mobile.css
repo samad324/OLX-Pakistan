@@ -52,8 +52,11 @@ mobileDiv{
     display: none;
 }
 .mobile-fields{
-    width: 65% !important;
+    width: 78% !important;
 }
 .footer{
     display: none !important;
+}
+.needReg{
+    display: flex !important;
 }

@@ -12,6 +12,7 @@ firebase.initializeApp(config);
 const firestore = firebase.firestore();
 
 
+
 function LoginUser(event){
     event.preventDefault();
     
@@ -20,13 +21,18 @@ function LoginUser(event){
 
     let btn = document.getElementById("btn");
     btn.innerHTML = `
-        <img src = "images/loading.gif" style=width : 14px>
+        <img src = "images/loading.gif" class="loadingImg">
     `
     firebase.auth().signInWithEmailAndPassword(email,passsord)
         .then(function(res){
             btn.innerHTML = "login"
-            console.log(res)
+            window.location = "../../index.html";
         }).catch(function(err){
             console.log(err.message)
         })
+}
+
+
+function toreg(){
+    window.location= "../register/register.html";
 }

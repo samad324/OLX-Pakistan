@@ -32,14 +32,14 @@
             </div>
             <div class="d-flex flex-row ">
                 <div class="align-self-center mobileDiv">
-                    <button class="btn btn-white">
+                    <button class="btn btn-white" onclick="toLogin()">
                         <i class="fa fa-user"></i>
                         <span class="text-bold">My Account</span>
                     </button>
                 </div>
                 <div class="align-self-center ml-2">
                     <button class="btn btn-orange ml-2">
-                        <span class="text-bold">Submit an Ad</span>
+                        <span class="text-bold" onclick="toSubmitAnAd()">Submit an Ad</span>
                     </button>
                 </div>
             </div>
@@ -58,16 +58,7 @@
                     </div>
                     <input type="text" class="form-control" placeholder="All Pakistan" aria-label="Username" aria-describedby="basic-addon1">
                 </div>
-                <div class="web-fields input-group ml-3 w-50">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text bg-white ico" id="basic-addon1">
-                            <i class="fa fa-search"></i>
-                        </span>
-                    </div>
-                    <input type="text" class="form-control" placeholder="Search An Ad" aria-label="Username" aria-describedby="basic-addon1">
-                </div>
-
-                <div class="input-group mobile-fields ml-3">
+                <div class="mobile-fields input-group ml-3 w-50">
                     <div class="input-group-prepend">
                         <span class="input-group-text bg-white ico" id="basic-addon1">
                             <i class="fa fa-search"></i>
@@ -98,55 +89,55 @@
 
 
             <div class="row">
-                <div class="col-lg-2 col-md-2 col-sm-4">
+                <div class="col-lg-2 col-md-2 col-sm-4 catDiv" onclick="viewit(event)">
                     <img src="images/cat/property.png" class="w-100">
                     <p class="text-center">Property For Sale</p>
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-4">
+                <div class="col-lg-2 col-md-2 col-sm-4 catDiv" onclick="viewit(event)">
                     <img src="images/cat/property2.png" class="w-100">
                     <p class="text-center">Property For Rent</p>
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-4">
+                <div class="col-lg-2 col-md-2 col-sm-4 catDiv" onclick="viewit(event)">
                     <img src="images/cat/mobile.png" class="w-100">
                     <p class="text-center">Mobiles</p>
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-4">
+                <div class="col-lg-2 col-md-2 col-sm-4 catDiv" onclick="viewit(event)">
                     <img src="images/cat/industry.png" class="w-100">
                     <p class="">Bussiness industrial & Agriculture</p>
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-4">
+                <div class="col-lg-2 col-md-2 col-sm-4 catDiv" onclick="viewit(event)">
                     <img src="images/cat/electronic.jpg" class="w-100">
                     <p class="text-center">Electronics</p>
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-4">
+                <div class="col-lg-2 col-md-2 col-sm-4 catDiv" onclick="viewit(event)">
                     <img src="images/cat/dog.png" class="w-100">
                     <p class="text-center">Animals</p>
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-4">
+                <div class="col-lg-2 col-md-2 col-sm-4 catDiv" onclick="viewit(event)">
                     <img src="images/cat/car.png" class="w-100">
                     <p class="text-center">Verhicals</p>
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-4">
+                <div class="col-lg-2 col-md-2 col-sm-4 catDiv" onclick="viewit(event)">
                     <img src="images/cat/bike.png" class="w-100">
                     <p class="text-center">Bikes</p>
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-4">
+                <div class="col-lg-2 col-md-2 col-sm-4 catDiv" onclick="viewit(event)">
                     <img src="images/cat/book.jpg" class="w-100">
                     <p class="text-center">Books, Sports & Hobbies</p>
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-4">
+                <div class="col-lg-2 col-md-2 col-sm-4 catDiv" onclick="viewit(event)">
                     <img src="images/cat/beauty.jpg" class="w-100">
                     <p class="text-center">Beauty & Fashion</p>
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-4">
+                <div class="col-lg-2 col-md-2 col-sm-4 catDiv" onclick="viewit(event)">
                     <img src="images/cat/battery.png" class="w-100">
                     <p class="text-center">Furniture & Home Decor</p>
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-4">
+                <div class="col-lg-2 col-md-2 col-sm-4 catDiv" onclick="viewit(event)">
                     <img src="images/cat/job.png" class="w-100">
                     <p class="text-center">Jobs</p>
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-4">
+                <div class="col-lg-2 col-md-2 col-sm-4 catDiv" onclick="viewit(event)">
                     <img src="images/cat/kart.png" class="w-100">
                     <p class="text-center">Kids</p>
                 </div>
@@ -303,8 +294,6 @@
 
 
         <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase-firestore.js"></script>
         <script src="js/bootstrap.bundle.js"></script>
         <script src="js/bootstrap.bundle.min.js"></script>
         <script src="js/bootstrap.min.js"></script>

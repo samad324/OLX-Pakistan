@@ -10,3 +10,12 @@ var config = {
 
 
   var firestore = firebase.firestore();
+
+
+
+  function viewit(event){
+    let cat = event.target.nextSibling.nextSibling.innerHTML;
+    console.log(cat);
+    localStorage.setItem("cat",cat);
+    window.location = "src/viewAdsByCats/viewAds.html"
+  }
