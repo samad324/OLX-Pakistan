@@ -9,7 +9,7 @@ var config = {
 firebase.initializeApp(config);
 
 const firestore = firebase.firestore();
-const settings = {/* your settings... */ timestampsInSnapshots: true};
+const settings = {/* your settings... */ timestampsInSnapshots: true };
 firestore.settings(settings);
 
 
@@ -19,10 +19,11 @@ function registerUser(event) {
     let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;
     let cPassword = document.getElementById("cPassword").value;
+    let name = document.getElementById("name").value;
 
     let data = {
-        email,
-        password
+        email: email,
+        name: name
     }
 
     console.log(data);
@@ -42,21 +43,32 @@ function registerUser(event) {
     firebase.auth().createUserWithEmailAndPassword(email, password).then(function (res) {
         console.log(res);
         btnSubmit.innerHTML = "Register";
-        firestore.collection("users").add(
-            data
-        ).then(function(docRef){
-            window.location = "../../index.html"
+        var user = firebase.auth().currentUser;
+
+        user.updateProfile({
+            displayName: name
+        }).then(function () {
+            firestore.collection("users").doc(res.user.uid).set(data)
+                .then(function (docRef) {
+                    window.location = "../../index.html"
+                })
         })
-    })
-        .catch(function (error) {
-            // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            alert(error.message)
-        });
+            .catch(function (error) {
+                // Handle Errors here.
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                alert(error.message)
+            });
+
+    }).catch(function (error) {
+        // An error happened.
+    });
+
+
+
 }
 
 
-function toLogin(){
+function toLogin() {
     window.location = "../login/login.html"
 }

@@ -25,10 +25,13 @@ function LoginUser(event){
     `
     firebase.auth().signInWithEmailAndPassword(email,passsord)
         .then(function(res){
+            console.log(res);
+            localStorage.setItem("user",res.user.uid)
             btn.innerHTML = "login"
             window.location = "../../index.html";
         }).catch(function(err){
             console.log(err.message)
+            btn.innerHTML = "login"
         })
 }
 

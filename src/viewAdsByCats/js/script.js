@@ -17,6 +17,7 @@ firestore.collection(cat).get()
         doc.forEach(element => {
             console.log(doc.docs)
             console.log(element.data());
+            localStorage.setItem("adderId",element.data().adderId)
             let data = element.data()
             resultDiv.innerHTML += `
             <div class="container result mt-2 d-flex flex-row" id="${doc.docs[indexNo].id}" onclick="viewAd(event)">
