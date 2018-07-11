@@ -18,8 +18,14 @@ let cUser = localStorage.getItem("user")
 
 firestore.collection("messages").where("recieverId", "==", cUser)
     .onSnapshot(function (querySnapshot) {
-        querySnapshot.forEach(element => {
-            
+        querySnapshot.docChanges().forEach(element => {
+            console.log(element.doc.data())
+            firestore.collection("messages").doc(element.doc.id).collection("message")
+                .onSnapshot(function(res){
+                    res.docChanges().forEach(mess => {
+                        console.log(mess.doc.data())
+                    })
+                })
         });
     })
 
@@ -158,3 +164,10 @@ firestore.collection("abc").where("name", "==", "sa")
 //     .catch(function (error) {
 //         console.error("Error adding document: ", error);
 //     });
+
+
+
+
+
+
+
