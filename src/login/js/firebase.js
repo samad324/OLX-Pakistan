@@ -25,6 +25,7 @@ function LoginUser(event){
     `
     firebase.auth().signInWithEmailAndPassword(email,passsord)
         .then(function(res){
+            localStorage.setItem("user",res.user.uid);
             console.log(res);
             localStorage.setItem("user",res.user.uid)
             btn.innerHTML = "login"

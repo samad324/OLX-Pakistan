@@ -14,20 +14,52 @@ console.log("messaging", messaging);
 auth.onAuthStateChanged(function (user) {
 
 })
-let cUser = localStorage.getItem("user")
+let cUser = localStorage.getItem("user");
+let chats = new Set();
 
 firestore.collection("messages").where("recieverId", "==", cUser)
     .onSnapshot(function (querySnapshot) {
         querySnapshot.docChanges().forEach(element => {
-            console.log(element.doc.data())
-            firestore.collection("messages").doc(element.doc.id).collection("message")
-                .onSnapshot(function(res){
-                    res.docChanges().forEach(mess => {
-                        console.log(mess.doc.data())
-                    })
-                })
-        });
+            chats.add(element.doc.id)
+        })
     })
+
+firestore.collection("messages").where("senderId", "==", cUser)
+    .onSnapshot(function (querySnapshot) {
+        querySnapshot.docChanges().forEach(element => {
+            chats.add(element.doc.id)
+        })
+    })
+
+
+
+// firestore.collection("messages").where("recieverId", "==", cUser)
+//     .onSnapshot(function (querySnapshot) {
+//         querySnapshot.docChanges().forEach(element => {
+//             console.log(element.doc.data())
+//             firestore.collection("messages").doc(element.doc.id).collection("message")
+//                 .onSnapshot(function(res){
+//                     res.docChanges().forEach(mess => {
+//                         chats.add(element.doc.id)
+//                         console.log(mess.doc.data())
+//                     })
+//                 })
+//         });
+//     })
+
+//     firestore.collection("messages").where("senderId", "==", cUser)
+//     .onSnapshot(function (querySnapshot) {
+//         querySnapshot.docChanges().forEach(element => {
+//             console.log(element.doc.data())
+//             firestore.collection("messages").doc(element.doc.id).collection("message")
+//                 .onSnapshot(function(res){
+//                     res.docChanges().forEach(mess => {
+//                         chats.add(element.doc.id)
+//                         console.log(mess.doc.data())
+//                     })
+//                 })
+//         });
+//     })
 
 
 
@@ -61,7 +93,7 @@ function sendMessage(event) {
                 firestore.collection("messages").doc(doc.docs[0].id).collection("message").add({
                     message: message,
                     senderId: senderId,
-                    time: new Date()
+                    time: (new Date()).toString()
                 }).then(function () {
                     console.log("send and update")
                 })
@@ -77,7 +109,7 @@ function sendMessage(event) {
                             .add({
                                 message: message,
                                 senderId: senderId,
-                                time: new Date()
+                                time: (new Date()).toString()
                             }).then(messRef => {
                                 console.log("send Sucessfull!")
                             })
@@ -171,3 +203,16 @@ firestore.collection("abc").where("name", "==", "sa")
 
 
 
+
+
+function signOut(){
+
+    let btn = document.getElementById("logOUt");
+    btn.innerHTML = `
+        <img src="">
+    `
+    firebase.auth().signOut().then(function(res){
+        console.log("LOG OUT SuccessFull!!!");
+        window.location = "../../index.html"
+    })
+}

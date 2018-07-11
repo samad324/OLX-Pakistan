@@ -20,6 +20,7 @@ function registerUser(event) {
     let password = document.getElementById("password").value;
     let cPassword = document.getElementById("cPassword").value;
     let name = document.getElementById("name").value;
+    let img = document.getElementById("imgs").files[0];
 
     let data = {
         email: email,
@@ -42,6 +43,7 @@ function registerUser(event) {
 
     firebase.auth().createUserWithEmailAndPassword(email, password).then(function (res) {
         console.log(res);
+        localStorage.setItem("user", res.user.uid)
         btnSubmit.innerHTML = "Register";
         var user = firebase.auth().currentUser;
 
@@ -71,4 +73,33 @@ function registerUser(event) {
 
 function toLogin() {
     window.location = "../login/login.html"
+}
+
+
+
+function uploadPic(img) {
+
+    let promises = [];
+        let file = element.files[0]
+        if (file) {
+            promises.push(new Promise(function (resolve, reject) {
+                let fileName = file.name;
+                var storageRef = firebase.storage().ref();
+                let fileRef = "/ProPics/" + Math.random() + ".jpg";
+                let imgRef = storageRef.child(fileRef)
+                imgRef.put(file).then(function (snapshot) {
+                    imgRef.getDownloadURL().then(function (url) {
+                        console.log("url+++", url)
+                        resolve(url);
+                    })
+                })
+            })
+        })
+
+        if(img){
+            
+        }
+
+    return promises
+
 }
