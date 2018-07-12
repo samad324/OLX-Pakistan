@@ -1,7 +1,63 @@
 .allChats{
     margin-top: 40px;
+    height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 .chatDiv{
     height: 80px;
+    border: 1px solid rgb(216, 216, 216);
+    border-radius: 8px
+}
+.profileImg{
+    height: 70px;
+    margin-left: 16px;
+    border: 0.5px solid rgb(184, 184, 184);
+    border-radius:50%; 
+}
+.chatBox{
+    height: 310px;
+    border: 1px solid rgb(216, 216, 216);
+    border-radius: 8px;
+    margin-bottom: 40px;
+    background-color: #A4B603;
+}
+.reciverDetals{
+    
+    width: 98% !important;
+    height: 60px;
+    background-color: #572983;
+    color: white;
+}
+.messInp{
+    width: 94%;
+    object-position: bottom;
+}
+.bg-green{
+    background-color: #A4B603;
+}
+.messages{
+    width: 98%;
+    height: 200px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #fff;
+}
+.sendBtn{
+    margin-top: 4px;
+    background-color: #FF7A01;
+    border: 2px solid #FF7A01;
+    border-radius: 50%;
+    margin-left: 4px;
+    cursor: pointer;
+}
+#recieverPic{
+    height: 86%;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    width: 60px;
+}
+
+.border{
     border: 1px solid #000;
 }

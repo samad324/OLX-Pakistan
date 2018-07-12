@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="../../css/style (2).css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="../../images/icon.png" type="image/x-icon">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
-        crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
+        crossorigin="anonymous"> -->
     <title>Chats</title>
 </head>
 
@@ -50,11 +50,43 @@
 
 
     <div class="container allChats" id="allChats">
-        <h4>All Chats</h4>
-        <div class="w-80 chatDiv d-flex">
-            <h5 class="align-self-center ml-3">User1</h5>
+        <h4 class="">All Chats</h4>
+        <div class="w-80 m-auto chatDiv d-flex flex-row">
+            <img src="../../images/cat/dog.png" class="profileImg align-self-center">
+            <div class="ml-3 d-flex flex-column align-self-center">
+                <h5>User 1</h5>
+                <span>message....</span>
+                <span>At: time</span>
+            </div>
         </div>
     </div>
+
+
+
+    <div class="container chatBox">
+        <div class="reciverDetals d-flex flex-row">
+            <div class="mt-1 ml-2">
+                <img src="../../images/cat/electronic.jpg" id="recieverPic">
+            </div>
+            <div class="d-flex flex-column ml-2 mt-3 align-content-center">
+                <h5>User Name</h5>
+            </div>
+        </div>
+        <div class="messages" id="messageDiv"></div>
+        <form onsubmit="sendMessage(event)">
+            <div class="d-flex flex-row">
+                <div class="messInp align-self-center">
+                    <input type="text" class="form-control" id="input">
+                </div>
+                <div>
+                    <button class="sendBtn align-self-center" type="submit">
+                        <img src="images/baseline_send_white_18dp.png">
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
 
 
     <div class="container">

@@ -22,12 +22,8 @@ function registerUser(event) {
     let name = document.getElementById("name").value;
     let img = document.getElementById("imgs").files[0];
 
-    let data = {
-        email: email,
-        name: name
-    }
 
-    console.log(data);
+
 
     if (password !== cPassword) {
         let passInp = document.getElementById("cPassword");
@@ -39,32 +35,57 @@ function registerUser(event) {
     btnSubmit.innerHTML = `
         <img src="images/loading.gif" style="width: 14px">
     `
+    let prom = uploadPic(img);
+
+    Promise.all(prom).then(function (resProm) {
+        console.log(resProm);
+
+        firebase.auth().createUserWithEmailAndPassword(email, password).then(function (res) {
+            console.log(res);
+            localStorage.setItem("user", res.user.uid)
+            btnSubmit.innerHTML = "Register";
+            var user = firebase.auth().currentUser;
+
+            user.updateProfile({
+                displayName: name
+            }).then(function () {
+
+                let data;
+                if (resProm[0] == undefined) { 
+                     data = {
+                        email: email,
+                        name: name,
+                        profileImg: "https://firebasestorage.googleapis.com/v0/b/olxpakistanpwa.appspot.com/o/download.png?alt=media&token=953c657b-151a-46a7-b946-b61a71bc7a0f"
+                    }
+                }
+                else {
+                     data = {
+                        email: email,
+                        name: name,
+                        profileImg: resProm[0]
+                    }
+                }
+                console.log(data)
+
+                firestore.collection("users").doc(res.user.uid).set(data)
+                    .then(function (docRef) {
+                        window.location = "../../index.html"
+                    })
+            })
+                .catch(function (error) {
+                    // Handle Errors here.
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    alert(error.message)
+                });
+
+        }).catch(function (error) {
+            // An error happened.
+            console.log(error.message)
+        });
+    })
 
 
-    firebase.auth().createUserWithEmailAndPassword(email, password).then(function (res) {
-        console.log(res);
-        localStorage.setItem("user", res.user.uid)
-        btnSubmit.innerHTML = "Register";
-        var user = firebase.auth().currentUser;
-
-        user.updateProfile({
-            displayName: name
-        }).then(function () {
-            firestore.collection("users").doc(res.user.uid).set(data)
-                .then(function (docRef) {
-                    window.location = "../../index.html"
-                })
-        })
-            .catch(function (error) {
-                // Handle Errors here.
-                var errorCode = error.code;
-                var errorMessage = error.message;
-                alert(error.message)
-            });
-
-    }).catch(function (error) {
-        // An error happened.
-    });
 
 
 
@@ -77,29 +98,26 @@ function toLogin() {
 
 
 
-function uploadPic(img) {
 
-    let promises = [];
-        let file = element.files[0]
-        if (file) {
-            promises.push(new Promise(function (resolve, reject) {
-                let fileName = file.name;
+
+
+function uploadPic(img) {
+    let prom = [];
+
+    if (img) {
+        prom.push(
+            new Promise(function (resolve, reject) {
                 var storageRef = firebase.storage().ref();
                 let fileRef = "/ProPics/" + Math.random() + ".jpg";
-                let imgRef = storageRef.child(fileRef)
-                imgRef.put(file).then(function (snapshot) {
+                let imgRef = storageRef.child(fileRef);
+                imgRef.put(img).then(function (snapshot) {
                     imgRef.getDownloadURL().then(function (url) {
-                        console.log("url+++", url)
-                        resolve(url);
+                        console.log(url);
+                        resolve(url)
                     })
                 })
             })
-        })
-
-        if(img){
-            
-        }
-
-    return promises
-
+        )
+    }
+    return prom
 }
