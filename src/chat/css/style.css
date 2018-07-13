@@ -64,4 +64,14 @@
 }
 .text-black{
     color: #000 !important;
-}.message{}
+}
+.message{
+    width: 60% !important;
+}
+.float-right{
+    margin-left: 40% !important;
+}
+
+.cursor-pointer:hover{
+    cursor: pointer;
+}

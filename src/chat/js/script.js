@@ -28,13 +28,13 @@ firestore.collection("messages").where("recieverId", "==", cUser)
 
                     previosChatsDiv.innerHTML += `
                         <div class="w-80 m-auto chatDiv d-flex flex-row" id=${element.doc.id} onclick = "startChat(event)" >
-                        <div>
-                        <img src=${doc.data().profileImg} class="profileImg align-self-center">
+                        <div class="align-self-center">
+                        <img src=${doc.data().profileImg} class="profileImg align-self-center cursor-pointer">
                         </div>
-                        <div class="ml-3 d-flex flex-column align-self-center">
+                        <div class="ml-3 d-flex flex-column align-self-center cursor-pointer">
                         <h5>${doc.data().name}</h5>
-                        <span>message....</span>
-                        <span>At: time</span>
+                        <span class="cursor-pointer">message....</span>
+                        <span class="cursor-pointer">At: time</span>
                         </div>
                         </div>
 
@@ -83,13 +83,13 @@ firestore.collection("messages").where("senderId", "==", cUser)
 
                     previosChatsDiv.innerHTML += `
                         <div class="w-80 m-auto chatDiv d-flex flex-row" id=${element.doc.id}>
-                        <div>
-                        <img src=${doc.data().profileImg} class="profileImg align-self-center">
+                        <div class="align-self-center">
+                        <img src=${doc.data().profileImg} class="profileImg align-self-center cursor-pointer">
                         </div>
                         <div class="ml-3 d-flex flex-column align-self-center">
-                        <h5>${doc.data().name}</h5>
-                        <span>message....</span>
-                        <span>At: time</span>
+                        <h5 class="cursor-pointer">${doc.data().name}</h5>
+                        <span class="cursor-pointer">message....</span>
+                        <span class="cursor-pointer">At: time</span>
                         </div>
                         </div>
                          `
@@ -421,7 +421,7 @@ if (recieverId && senderId) {
                                     </div>
                          `
 
-                            } else if (message.data().senderId !== recieverId) {
+                            } else{
 
                                 messageDiv.innerHTML += `
                             <div class="m-2 border">
@@ -481,7 +481,7 @@ function sendMessage(event) {
     debugger
     if (chatBox.id) {
         firestore.collection("messages").doc(chatBox.id)
-            .collection("message").add({
+            .collection("message").doc( ((new Date).getTime()).toString() ).set({
                 message: messageToSend,
                 senderId: senderId,
                 time: (new Date).toString()
@@ -604,7 +604,7 @@ function initailizeChatListner(chatId) {
                     else {
 
                         messageDiv.innerHTML += `
-                                    <div class="border m-2">
+                                    <div class="border m-2 message">
                                      <p class="font-weight-bold text-black p-3">${change.doc.data().message}</p>
                                     </div>
                          `
