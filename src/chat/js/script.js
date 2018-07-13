@@ -25,8 +25,8 @@ firestore.collection("messages").where("recieverId", "==", cUser)
             chats.add(element.doc.id);
             firestore.collection('users').doc(element.doc.data().senderId).get()
                 .then(doc => {
-                    
-                        previosChatsDiv.innerHTML += `
+
+                    previosChatsDiv.innerHTML += `
                         <div class="w-80 m-auto chatDiv d-flex flex-row" id=${element.doc.id} onclick = "startChat(event)" >
                         <div>
                         <img src=${doc.data().profileImg} class="profileImg align-self-center">
@@ -39,7 +39,7 @@ firestore.collection("messages").where("recieverId", "==", cUser)
                         </div>
 
                          `
-                   
+
                 })
 
         })
@@ -49,20 +49,22 @@ firestore.collection("messages").where("recieverId", "==", cUser)
 // setTimeout(() => {
 //     console.log(chats);
 //     chats.forEach(elem => {
-        
+
 //     })
 
 // },4000)
 
 
 
-function startChat(event){
-    
+function startChat(event) {
+    let chatBox = document.getElementsByClassName("chatBox")[0];
 
-    if(event.target.nodeName == "SPAN" || event.target.nodeName == "H5" || event.target.nodeName  == "IMG"){
-        console.log(event.target.parentNode.parentNode);
-        console.log(event.target.nodeName);
-        
+    if (event.target.nodeName == "SPAN" || event.target.nodeName == "H5" || event.target.nodeName == "IMG") {
+        let target = (event.target.parentNode.parentNode).id;
+        console.log(target);
+        initailizeChatListner(target);
+        chatBox.id = target;
+
     }
 
 
@@ -78,8 +80,8 @@ firestore.collection("messages").where("senderId", "==", cUser)
             chats.add(element.doc.id);
             firestore.collection('users').doc(element.doc.data().recieverId).get()
                 .then(doc => {
-                    
-                        previosChatsDiv.innerHTML += `
+
+                    previosChatsDiv.innerHTML += `
                         <div class="w-80 m-auto chatDiv d-flex flex-row" id=${element.doc.id}>
                         <div>
                         <img src=${doc.data().profileImg} class="profileImg align-self-center">
@@ -91,7 +93,7 @@ firestore.collection("messages").where("senderId", "==", cUser)
                         </div>
                         </div>
                          `
-                   
+
                 })
 
         })
@@ -381,7 +383,7 @@ var senderId = localStorage.getItem("user");
 
 
 
-
+let roomFound = false;
 
 let currentChat;
 
@@ -389,7 +391,7 @@ let currentChat;
 if (recieverId && senderId) {
     let chatBox = document.getElementsByClassName("chatBox")[0];
     let messageDiv = document.getElementById("messageDiv");
-    let roomFound = false;
+
 
 
     console.log("working")
@@ -402,6 +404,8 @@ if (recieverId && senderId) {
                 console.log("chat room Found>>>", chatRoom)
                 currentChat = chatRoom.id;
                 chatBox.id = chatRoom.id;
+
+                initailizeChatListner(currentChat)
 
                 firestore.collection("messages").doc(chatRoom.id)
                     .collection("message")
@@ -437,18 +441,7 @@ if (recieverId && senderId) {
         })
 
 
-    setTimeout(() => {
-        if (roomFound == false) {
-            firestore.collection("messages").add({
-                senderId: senderId,
-                recieverId: recieverId,
-            }).then(chatRoom => {
-                chatBox.id = chatRoom.id;
-                currentChat = chatRoom.id;
-                console.log("Chat room Created With This ID >", chatRoom.id)
-            })
-        }
-    }, 5000)
+
 
 
 
@@ -458,52 +451,161 @@ if (recieverId && senderId) {
 
 
 
+
+
+function createRoom() {
+    return new Promise((resolve, reject) => {
+        debugger
+        firestore.collection("messages").add({
+            senderId: senderId,
+            recieverId: recieverId,
+        }).then(chatRoom => {
+            chatBox.id = chatRoom.id;
+            currentChat = chatRoom.id;
+            console.log("Chat room Created With This ID >", chatRoom.id);
+            initailizeChatListner(chatRoom.id)
+            resolve(chatRoom.id);
+
+        })
+
+    })
+
+}
+let chatInitialed = false;
 
 function sendMessage(event) {
     event.preventDefault();
 
     let messageToSend = document.getElementById("input").value;
+    let chatBox = document.getElementsByClassName("chatBox")[0]
+    debugger
+    if (chatBox.id) {
+        firestore.collection("messages").doc(chatBox.id)
+            .collection("message").add({
+                message: messageToSend,
+                senderId: senderId,
+                time: (new Date).toString()
+            }).then(docRef => {
+                if (chatInitialed == false) {
 
-    firestore.collection("messages").doc(currentChat)
-        .collection("message").add({
-            message: messageToSend,
+                    initailizeChatListner(chatBox.id);
+                    chatInitialed = true
+
+                }
+            })
+
+    } else {
+
+        firestore.collection("messages").add({
             senderId: senderId,
-            time: (new Date).toString()
+            recieverId: recieverId
+        }).then(docRef => {
+            chatBox.id = docRef.id;
+
+            if (chatInitialed == false) {
+
+                initailizeChatListner(chatBox.id);
+                chatInitialed = true
+
+            }
+            sendMessage()
+
 
         })
+
+
+        // firestore.collection("messages").doc(currentChat)
+        //     .collection("message").add({
+        //         message: messageToSend,
+        //         senderId: senderId,
+        //         time: (new Date).toString()
+
+        //     }).then(() => {
+        //         initailizeChatListner(currentChat);
+        //         chatBox.id = 
+        //     })
+
+    }
+
+
+
 
 
 }
 
 
+// function sendMessage(event) {
+//     event.preventDefault();
+
+//     let messageToSend = document.getElementById("input").value;
+//     let chatBox = document.getElementsByClassName("chatBox")[0]
+//     debugger
+//     if (chatBox.id) {
+//         createRoom().then((chatRoomId) => {
+
+//             initailizeChatListner(chatRoomId)
+
+//             firestore.collection("messages").doc(chatRoomId)
+//                 .collection("message").add({
+//                     message: messageToSend,
+//                     senderId: senderId,
+//                     time: (new Date).toString()
+
+//                 })
+//         })
+
+
+//     } else {
+
+//         firestore.collection("messages").doc(currentChat)
+//             .collection("message").add({
+//                 message: messageToSend,
+//                 senderId: senderId,
+//                 time: (new Date).toString()
+
+//             }).then(() => {
+//                 initailizeChatListner(currentChat)
+//             })
+
+//     }
+
+
+
+
+
+// }
+
 
 let messageDiv = document.getElementById("messageDiv");
 
 
-setTimeout(function () {
+function initailizeChatListner(chatId) {
 
+    const chatID = chatId;
+    debugger
+    if (chatID) {
 
-    if (currentChat) {
+        messageDiv.innerHTML = "";
 
-        firestore.collection("messages").doc(currentChat)
+        firestore.collection("messages").doc(chatID)
             .collection("message")
             .onSnapshot(querySnapshot => {
                 querySnapshot.docChanges().forEach(change => {
                     if (change.doc.data().senderId == senderId) {
 
                         messageDiv.innerHTML += `
-                                    <div class="bg-green m-2 float-right">
+                                    <div class="bg-green m-2 float-right message">
                                      <p class="text-white font-weight-bold p-3">${change.doc.data().message}</p>
                                     </div>
                          `
 
                     }
 
-                    else if (change.data().senderId !== recieverId) {
+                    else {
 
                         messageDiv.innerHTML += `
                                     <div class="border m-2">
-                                     <p class="font-weight-bold p-3">${change.doc.data().message}</p>
+                                     <p class="font-weight-bold text-black p-3">${change.doc.data().message}</p>
                                     </div>
                          `
 
@@ -516,7 +618,9 @@ setTimeout(function () {
 
     }
 
-}, 7000)
+}
+
+
 
 function signOut() {
 
