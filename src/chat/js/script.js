@@ -17,19 +17,93 @@ auth.onAuthStateChanged(function (user) {
 let cUser = localStorage.getItem("user");
 let chats = new Set();
 
+let previosChatsDiv = document.getElementById("allChats");
+
 firestore.collection("messages").where("recieverId", "==", cUser)
     .onSnapshot(function (querySnapshot) {
         querySnapshot.docChanges().forEach(element => {
-            chats.add(element.doc.id)
+            chats.add(element.doc.id);
+            firestore.collection('users').doc(element.doc.data().senderId).get()
+                .then(doc => {
+                    
+                        previosChatsDiv.innerHTML += `
+                        <div class="w-80 m-auto chatDiv d-flex flex-row" id=${element.doc.id} onclick = "startChat(event)" >
+                        <div>
+                        <img src=${doc.data().profileImg} class="profileImg align-self-center">
+                        </div>
+                        <div class="ml-3 d-flex flex-column align-self-center">
+                        <h5>${doc.data().name}</h5>
+                        <span>message....</span>
+                        <span>At: time</span>
+                        </div>
+                        </div>
+
+                         `
+                   
+                })
+
         })
     })
+
+
+// setTimeout(() => {
+//     console.log(chats);
+//     chats.forEach(elem => {
+        
+//     })
+
+// },4000)
+
+
+
+function startChat(event){
+    
+
+    if(event.target.nodeName == "SPAN" || event.target.nodeName == "H5" || event.target.nodeName  == "IMG"){
+        console.log(event.target.parentNode.parentNode);
+        console.log(event.target.nodeName);
+        
+    }
+
+
+
+}
+
+
+
 
 firestore.collection("messages").where("senderId", "==", cUser)
     .onSnapshot(function (querySnapshot) {
         querySnapshot.docChanges().forEach(element => {
-            chats.add(element.doc.id)
+            chats.add(element.doc.id);
+            firestore.collection('users').doc(element.doc.data().recieverId).get()
+                .then(doc => {
+                    
+                        previosChatsDiv.innerHTML += `
+                        <div class="w-80 m-auto chatDiv d-flex flex-row" id=${element.doc.id}>
+                        <div>
+                        <img src=${doc.data().profileImg} class="profileImg align-self-center">
+                        </div>
+                        <div class="ml-3 d-flex flex-column align-self-center">
+                        <h5>${doc.data().name}</h5>
+                        <span>message....</span>
+                        <span>At: time</span>
+                        </div>
+                        </div>
+                         `
+                   
+                })
+
         })
     })
+
+
+// firestore.collection("messages").where("senderId", "==", cUser)
+//     .onSnapshot(function (querySnapshot) {
+//         querySnapshot.docChanges().forEach(element => {
+//             chats.add(element.doc.id)
+//         })
+//     })
 
 // let chatsSize = chats.size;
 // setInterval(function () {
@@ -343,7 +417,7 @@ if (recieverId && senderId) {
                                     </div>
                          `
 
-                            } else if (message.data().senderId !== recieverId || message.data().senderId == senderId) {
+                            } else if (message.data().senderId !== recieverId) {
 
                                 messageDiv.innerHTML += `
                             <div class="m-2 border">
@@ -374,7 +448,7 @@ if (recieverId && senderId) {
                 console.log("Chat room Created With This ID >", chatRoom.id)
             })
         }
-    }, 8000)
+    }, 5000)
 
 
 
@@ -405,44 +479,44 @@ function sendMessage(event) {
 
 let messageDiv = document.getElementById("messageDiv");
 
- 
-setTimeout(function(){
+
+setTimeout(function () {
 
 
+    if (currentChat) {
 
+        firestore.collection("messages").doc(currentChat)
+            .collection("message")
+            .onSnapshot(querySnapshot => {
+                querySnapshot.docChanges().forEach(change => {
+                    if (change.doc.data().senderId == senderId) {
 
-firestore.collection("messages").doc(currentChat)
-    .collection("message")
-    .onSnapshot(querySnapshot => {
-        querySnapshot.docChanges().forEach(change => {
-            if (change.doc.data().senderId == senderId) {
-
-                messageDiv.innerHTML += `
+                        messageDiv.innerHTML += `
                                     <div class="bg-green m-2 float-right">
                                      <p class="text-white font-weight-bold p-3">${change.doc.data().message}</p>
                                     </div>
                          `
 
-            }
+                    }
 
-            else if(change.data().senderId !== recieverId || change.data().senderId == senderId){
-                
-                messageDiv.innerHTML += `
+                    else if (change.data().senderId !== recieverId) {
+
+                        messageDiv.innerHTML += `
                                     <div class="border m-2">
                                      <p class="font-weight-bold p-3">${change.doc.data().message}</p>
                                     </div>
                          `
 
-            }
+                    }
 
 
-        })
+                })
 
-    })
+            })
 
+    }
 
-
-},10000)
+}, 7000)
 
 function signOut() {
 
