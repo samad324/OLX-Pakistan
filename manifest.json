@@ -1,0 +1,9 @@
+{
+    "name" : "OLX Pakistan",
+    "short_name" : "OLX",
+    "start_url" : "/index.html",
+    "display" : "standalone",
+    "gcm_sender_id" : "103953800507",
+    "background_color" : "#fff",
+    "theme_color" : "#5B2B82"
+}

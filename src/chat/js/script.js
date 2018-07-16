@@ -62,9 +62,18 @@ function startChat(event) {
     if (event.target.nodeName == "SPAN" || event.target.nodeName == "H5" || event.target.nodeName == "IMG") {
         let target = (event.target.parentNode.parentNode).id;
         console.log(target);
-        initailizeChatListner(target);
+        
         chatBox.id = target;
-
+        firestore.collection("messages").doc(target)
+            .get().then(doc => {
+                if(doc.data().senderId !== localStorage.getItem("user")){
+                    localStorage.setItem("adderId" , doc.data().senderId)
+                }else if(doc.data().recieverId !== localStorage.getItem("user")){
+                    localStorage.setItem("adderId" , doc.data().recieverId)
+                }
+                initailizeChatListner(target);
+            })
+        
     }
 
 
@@ -484,6 +493,7 @@ function sendMessage(event) {
             .collection("message").doc( ((new Date).getTime()).toString() ).set({
                 message: messageToSend,
                 senderId: senderId,
+                recieverId : recieverId,
                 time: (new Date).toString()
             }).then(docRef => {
                 if (chatInitialed == false) {
