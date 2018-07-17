@@ -59,7 +59,7 @@ function uploadPic(array) {
 function submitAnAdd(event) {
     event.preventDefault();
 
-    let adTitle = document.getElementById("title").value;
+    let adTitle = document.getElementById("adtitle").value;
     let category = document.getElementById("category").value;
     let discription = document.getElementById("discription").value;
     let providence = document.getElementById("providence").value;

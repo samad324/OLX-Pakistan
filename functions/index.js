@@ -10,26 +10,25 @@ admin.initializeApp(functions.config().firebase);
 // });
 
 
-exports.sendNotification = functions.firestore.document('/messages/{roomId}/messages/{messageId}')
-.onWrite((event) => {
-    const payload = {
-        notification: {
-            title: 'New Message from',
-            body: 'New Message Body',
-            status: 'Wohoo its work',
-        }
-    }
+exports.sendNotification = functions.firestore.document('/messages/{roomId}/message/{messageId}')
+    .onWrite((event) => {
 
-    console.info(payload)
-    console.info("event >>>", event)
-    let resieverId = event.after.data().recieverId
-    return admin.firestore().collection("users").doc(resieverId).get().then((user) => {
+        console.info("event After >>>", event.after)
+        let resieverId = event.after.data().recieverId
+        return admin.firestore().collection("users").doc(resieverId).get().then((user) => {
 
-        if (!user.data()) return;
+            if (!user.data()) return;
 
-        const snapshot = user.data();
-        const token = snapshot.token;
-
-        return admin.messaging().sendToDevice(token, payload);
-    });
-})
+            const snapshot = user.data();
+            const payload = {
+                notification: {
+                    title: `New Message From ${snapshot.name}`,
+                    body: event.after.data().message,
+                    icon: snapshot.profileImg
+                }
+            }
+            const token = snapshot.token;
+            console.info("payload >>>", payload)
+            return admin.messaging().sendToDevice(token, payload);
+        });
+    })

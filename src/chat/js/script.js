@@ -643,3 +643,11 @@ function signOut() {
         window.location = "../../index.html"
     })
 }
+
+
+
+
+
+messaging.onMessage(function (payload) {
+    console.log('onMessage', payload);
+});
