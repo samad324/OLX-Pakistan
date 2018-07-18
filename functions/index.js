@@ -14,8 +14,9 @@ exports.sendNotification = functions.firestore.document('/messages/{roomId}/mess
     .onWrite((event) => {
 
         console.info("event After >>>", event.after)
-        let resieverId = event.after.data().recieverId
-        return admin.firestore().collection("users").doc(resieverId).get().then((user) => {
+        let resieverId = event.after.data().recieverId;
+        let senderId = event.after.data().senderId;
+        return admin.firestore().collection("users").doc(senderId).get().then((user) => {
 
             if (!user.data()) return;
 
@@ -27,8 +28,12 @@ exports.sendNotification = functions.firestore.document('/messages/{roomId}/mess
                     icon: snapshot.profileImg
                 }
             }
-            const token = snapshot.token;
-            console.info("payload >>>", payload)
-            return admin.messaging().sendToDevice(token, payload);
+            return admin.firestore().collection("users").doc(recieverId)
+                .get().then(reciever => {
+                    console.info("reciever" , reciever)
+                    return admin.messaging().sendToDevice(reciever.data().token, payload);
+                })
+            
+            
         });
     })

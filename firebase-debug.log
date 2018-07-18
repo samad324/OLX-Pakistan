@@ -1,0 +1,12 @@
+[debug] [2018-07-18T04:27:30.052Z] ----------------------------------------------------------------------
+[debug] [2018-07-18T04:27:30.067Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Student-26\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase logout
+[debug] [2018-07-18T04:27:30.067Z] CLI Version:   3.19.1
+[debug] [2018-07-18T04:27:30.067Z] Platform:      win32
+[debug] [2018-07-18T04:27:30.067Z] Node Version:  v8.11.1
+[debug] [2018-07-18T04:27:30.067Z] Time:          Wed Jul 18 2018 09:27:30 GMT+0500 (Pakistan Standard Time)
+[debug] [2018-07-18T04:27:30.067Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-07-18T04:27:30.332Z] >>> HTTP REQUEST GET https://accounts.google.com/o/oauth2/revoke?token=1%2FBUY7PimpDmX677YCgXzkPs9zZYEh4LHtgd55ksmB6c8  
+  
+ Wed Jul 18 2018 09:27:30 GMT+0500 (Pakistan Standard Time)
+[debug] [2018-07-18T04:27:30.753Z] <<< HTTP RESPONSE 200

@@ -11,9 +11,6 @@ console.log("auth", auth);
 console.log("messaging", messaging);
 
 
-auth.onAuthStateChanged(function (user) {
-
-})
 let cUser = localStorage.getItem("user");
 let chats = new Set();
 
@@ -416,33 +413,33 @@ if (recieverId && senderId) {
 
                 initailizeChatListner(currentChat)
 
-                firestore.collection("messages").doc(chatRoom.id)
-                    .collection("message")
-                    .get().then(function (messageRoom) {
+                // firestore.collection("messages").doc(chatRoom.id)
+                //     .collection("message")
+                //     .get().then(function (messageRoom) {
 
-                        messageRoom.forEach(function (message) {
-                            console.log("message DATA++++++++", message.data())
-                            if (message.data().senderId == senderId) {
+                //         messageRoom.forEach(function (message) {
+                //             console.log("message DATA++++++++", message.data())
+                //             if (message.data().senderId == senderId) {
 
-                                messageDiv.innerHTML += `
-                                    <div class="bg-green m-2 float-right">
-                                     <p class="text-white font-weight-bold p-3">${message.data().message}</p>
-                                    </div>
-                         `
+                //                 messageDiv.innerHTML += `
+                //                     <div class="bg-green m-2 float-right">
+                //                      <p class="text-white font-weight-bold p-3">${message.data().message}</p>
+                //                     </div>
+                //          `
 
-                            } else{
+                //             } else{
 
-                                messageDiv.innerHTML += `
-                            <div class="m-2 border">
-                             <p class="font-weight-bold p-3">${message.data().message}</p>
-                            </div>
-                 `
+                //                 messageDiv.innerHTML += `
+                //             <div class="m-2 border">
+                //              <p class="font-weight-bold p-3">${message.data().message}</p>
+                //             </div>
+                //  `
 
-                            }
+                //             }
 
-                        })
+                //         })
 
-                    })
+                //     })
 
 
             })
@@ -464,7 +461,6 @@ if (recieverId && senderId) {
 
 function createRoom() {
     return new Promise((resolve, reject) => {
-        debugger
         firestore.collection("messages").add({
             senderId: senderId,
             recieverId: recieverId,
@@ -511,14 +507,7 @@ function sendMessage(event) {
             recieverId: recieverId
         }).then(docRef => {
             chatBox.id = docRef.id;
-
-            if (chatInitialed == false) {
-
-                initailizeChatListner(chatBox.id);
-                chatInitialed = true
-
-            }
-            sendMessage()
+            sendMessage();
 
 
         })
