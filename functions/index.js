@@ -25,8 +25,8 @@ exports.sendNotification = functions.firestore.document('/messages/{roomId}/mess
                 notification: {
                     title: `New Message From ${snapshot.name}`,
                     body: event.after.data().message,
-                    icon: snapshot.profileImg,
-                    click_action: "https://olxpakistanpwa.firebaseapp.com/src/chat/index.html"
+                    icon: snapshot.profileImg, 
+                    badge : "../../images/icon.png"
                 }
             }
             return admin.firestore().collection("users").doc(event.after.data().recieverId)

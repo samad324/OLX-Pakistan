@@ -10,7 +10,7 @@
     <link rel="stylesheet" media="(max-width:785px)" href="../../css/mobile.css">
     <link rel="stylesheet" media="(min-width:786px)" href="../../css/web.css">
     <link rel="stylesheet" href="../../css/style (2).css">
-    <link rel="stylesheet" media="(min-width:786px)" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" media="(max-width: 785px)" href="css/mobile.css">
     <link rel="shortcut icon" href="../../images/icon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
@@ -22,162 +22,186 @@
 
 
 
-    <div class="d-flex flex-row justify-content-between navBar">
+    <div class="container">
 
-        <div class="d-flex flex-row">
-            <div class="align-self-center">
-                <img src="../../images/icon.png" alt="OLX Pakistan - Free Classsified in Pakistan" class="icon">
+        <div class="d-flex flex-row justify-content-between navBar">
+
+            <div class="d-flex flex-row">
+                <div class="align-self-center">
+                    <img src="../../images/icon.png" onclick="toHome()" alt="OLX Pakistan - Free Classsified in Pakistan" class="icon">
+                </div>
+                <div class="align-self-center ml-3 mobileDiv">
+                    <h5>Pakistan's Largest Marketplace</h5>
+                </div>
             </div>
-            <div class="align-self-center ml-3 mobileDiv">
-                <h5>Pakistan's Largest Marketplace</h5>
+            <div class="d-flex flex-row ">
+                <div class="align-self-center mobileDiv">
+                    <button class="btn btn-white" onclick="toLogin()">
+                        <i class="fa fa-user"></i>
+                        <span class="text-bold">My Account</span>
+                    </button>
+                </div>
+                <div class="align-self-center ml-2 SubmitBtn">
+                    <button class="btn btn-orange ml-2">
+                        <span class="text-bold" onclick="toSubmitAnAd()">
+                            Submit an Ad</span>
+                    </button>
+                </div>
+                <div class="align-self-center ml-2 toMyAccount">
+                    <button class="btn btn-orange ml-2">
+                        <div>
+                            <img src="../../images/account.png" class="">
+                        </div>
+                        <div>
+                            <span class="text-bold" onclick="toMyAccount()">Dashboard</span>
+                        </div>
+
+                    </button>
+                </div>
             </div>
+
         </div>
-        <div class="d-flex flex-row m-3">
-            <div class="align-self-center logBtn">
-                <button class="btn btn-white" onclick="toLogin()">
-                    <span class="text-bold">Login</span>
-                </button>
+
+
+        <div class="mt-3 w-90 m-auto">
+            <form onsubmit="return submitAnAdd(event)" class="mt-5">
+                <div>
+                    <span class="font-weight-bold">Ad Title</span>
+                    <input type="text" id="adtitle" class="form-control">
+                </div>
+                <div>
+                    <span class="font-weight-bold">Category</span>
+                    <select id="category" class="form-control">
+                        <option selected>---->select category<----</option>
+                        <option value="Property For Sale">Property For Sale</option>
+                        <option value="Property For Rent">Property For Rent</option>
+                        <option value="Mobiles">Mobiles</option>
+                        <option value="Bussiness industrial & Agriculture">Bussiness industrial & Agriculture</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="Animals">Animals</option>
+                        <option value="Verhicals">Verhicals</option>
+                        <option value="Bikes">Bikes</option>
+                        <option value="Books, Sports & Hobbies">Books, Sports & Hobbies</option>
+                        <option value="Beauty & Fashion">Beauty & Fashion</option>
+                        <option value="Furniture & Home Decor">Furniture & Home Decor</option>
+                        <option value="Jobs">Jobs</option>
+                        <option value="Kids">Kids</option>
+                    </select>
+                </div>
+                <div>
+                    <span class="font-weight-bold">Ad Discription</span>
+                    <textarea name="" id="discription" cols="50" rows="6" class="form-control"></textarea>
+                </div>
+                <div>
+                    <span class="font-weight-bold">Upload Photos</span>
+                    <div class="row ">
+                        <div class="col-md-6 col-sm-12 filesDiv m-auto">
+                            <input type="file" name="pics" id="photo">
+                        </div>
+                        <div class="col-md-6 col-sm-12 m-auto">
+                            <input type="file" name="pics">
+                        </div>
+
+                        <div class="col-md-6 col-sm-12 m-auto">
+                            <input type="file" name="pics" id="photo">
+                        </div>
+                        <div class="col-md-6 col-sm-12 m-auto">
+                            <input type="file" name="pics">
+                        </div>
+                    </div>
+                    <div class="m-2">
+                        <span class="font-weight-bold">Price</span>
+                        <input type="number" id="price" class="form-control">
+                    </div>
+                    <div>
+                        <span class="font-weight-bold">Province</span>
+                        <select name="" id="providence" class="form-control">
+                            <option value="sindh">sindh</option>
+                            <option value="punjab">punjab</option>
+                            <option value="Balochistan">Balochistan</option>
+                            <option value="khyber pakhton khuwa">khyber pakhton khuwa</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary m-4 float-right">Submit</button>
+
+            </form>
+
             </div>
-            <div class="align-self-center ml-2" onclick="toSubmit()">
-                <button class="btn btn-orange ml-2">
-                    <span class="text-bold">Submit an Ad</span>
-                </button>
-            </div>
-        </div>
-
-    </div>
-
-
-    <form onsubmit="return submitAnAdd(event)">
-        <div>
-            <span>Ad Title</span>
-            <input type="text" id="adtitle">
-        </div>
-        <div>
-            <span>Category</span>
-            <select id="category">
-                <option value="Property For Sale">Property For Sale</option>
-                <option value="Property For Rent">Property For Rent</option>
-                <option value="Mobiles">Mobiles</option>
-                <option value="Bussiness industrial & Agriculture">Bussiness industrial & Agriculture</option>
-                <option value="Electronics">Electronics</option>
-                <option value="Animals">Animals</option>
-                <option value="Verhicals">Verhicals</option>
-                <option value="Bikes">Bikes</option>
-                <option value="Books, Sports & Hobbies">Books, Sports & Hobbies</option>
-                <option value="Beauty & Fashion">Beauty & Fashion</option>
-                <option value="Furniture & Home Decor">Furniture & Home Decor</option>
-                <option value="Jobs">Jobs</option>
-                <option value="Kids">Kids</option>
-            </select>
-        </div>
-        <div>
-            <span>Ad Discription</span>
-            <textarea name="" id="discription" cols="50" rows="6"></textarea>
-        </div>
-        <div>
-            <span>Upload Photos</span>
-            <input type="file" name="pics" id="photo">
-            <input type="file" name="pics">
-            <input type="file" name="pics">
-            <input type="file" name="pics">
-            <input type="file" name="pics">
-            <input type="file" name="pics">
-        </div>
-        <div>
-            <span>Price</span>
-            <input type="number" id="price">
-        </div>
-        <div>
-            <span>Province</span>
-            <select name="" id="providence">
-                <option value="sindh">sindh</option>
-                <option value="punjab">punjab</option>
-                <option value="Balochistan">Balochistan</option>
-                <option value="khyber pakhton khuwa">khyber pakhton khuwa</option>
-            </select>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-
-    </form>
 
 
 
 
+            <footer class=" w-100 d-flex d-row footer">
+                <div class="container mt-5 w-70">
+                    <table class="first">
+                        <tr>
+                            <td rowspan="4">
+                                <img src="images/logo.png" class="icon ml-5 ">
+                            </td>
+                            <td>Location maps</td>
+                            <td>Terms of Use</td>
+                            <td>Who we are</td>
+                        </tr>
+                        <tr>
+                            <td>Popular searches</td>
+                            <td>Help and Contact us</td>
+                            <td>join OLX</td>
+                        </tr>
+                        <tr>
+                            <td>Sitemap</td>
+                            <td></td>
+                            <td>Happy OLXers</td>
+                        </tr>
+                    </table>
+
+                </div>
+
+                <div class="mt-5 ml-2 d-inline-block w-30">
+                    <table>
+                        <tr>
+                            <th colspan="2" class="pl-3">Contact Us</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <i class="fa fa-envelope"></i>
+                            </td>
+                            <td>help@olx.com.pk</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <i class="fa fa-phone"></i>
+                            </td>
+                            <td>080010101</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <i class="fa fa-business"></i>
+                            </td>
+                            <td>Business Packeges</td>
+                        </tr>
+                    </table>
+                </div>
+            </footer>
 
 
 
-    <footer class=" w-100 d-flex d-row footer">
-        <div class="container mt-5 w-70">
-            <table class="first">
-                <tr>
-                    <td rowspan="4">
-                        <img src="images/logo.png" class="icon ml-5 ">
-                    </td>
-                    <td>Location maps</td>
-                    <td>Terms of Use</td>
-                    <td>Who we are</td>
-                </tr>
-                <tr>
-                    <td>Popular searches</td>
-                    <td>Help and Contact us</td>
-                    <td>join OLX</td>
-                </tr>
-                <tr>
-                    <td>Sitemap</td>
-                    <td></td>
-                    <td>Happy OLXers</td>
-                </tr>
-            </table>
-
-        </div>
-
-        <div class="mt-5 ml-2 d-inline-block w-30">
-            <table>
-                <tr>
-                    <th colspan="2" class="pl-3">Contact Us</th>
-                </tr>
-                <tr>
-                    <td>
-                        <i class="fa fa-envelope"></i>
-                    </td>
-                    <td>help@olx.com.pk</td>
-                </tr>
-                <tr>
-                    <td>
-                        <i class="fa fa-phone"></i>
-                    </td>
-                    <td>080010101</td>
-                </tr>
-                <tr>
-                    <td>
-                        <i class="fa fa-business"></i>
-                    </td>
-                    <td>Business Packeges</td>
-                </tr>
-            </table>
-        </div>
-    </footer>
-
-
-
-    <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
-    <!-- <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase-app.js"></script>
+            <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+            <!-- <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase-firestore.js"></script>
         -->
-    <script>
-        var config = {
-            apiKey: "AIzaSyD5ALJ3Pvfn86ybcI6-uWUuKn8xBL7Fweo",
-            authDomain: "olxpakistanpwa.firebaseapp.com",
-            databaseURL: "https://olxpakistanpwa.firebaseio.com",
-            projectId: "olxpakistanpwa",
-            storageBucket: "olxpakistanpwa.appspot.com",
-            messagingSenderId: "573103718935"
-        };
-        firebase.initializeApp(config);
-    </script>
-    <script src="js/script.js"></script>
-    <script src="js/firebase.js"></script>
+            <script>
+                var config = {
+                    apiKey: "AIzaSyD5ALJ3Pvfn86ybcI6-uWUuKn8xBL7Fweo",
+                    authDomain: "olxpakistanpwa.firebaseapp.com",
+                    databaseURL: "https://olxpakistanpwa.firebaseio.com",
+                    projectId: "olxpakistanpwa",
+                    storageBucket: "olxpakistanpwa.appspot.com",
+                    messagingSenderId: "573103718935"
+                };
+                firebase.initializeApp(config);
+            </script>
+            <script src="js/script.js"></script>
+            <script src="js/firebase.js"></script>
 </body>
 
 </html>

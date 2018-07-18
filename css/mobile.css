@@ -60,3 +60,26 @@ mobileDiv{
 .needReg{
     display: flex !important;
 }
+
+.SubmitBtn{
+    display: none;
+}
+.btn-orange{
+    height: 80% !important;
+}
+.SubmitAdAdDivForMobile{
+    height: 60px;
+    width: 96%;
+    margin: auto;
+    background-color: #FF7A01;
+    border: 2px solid #fff;
+    border-radius: 6px;
+    margin-top: 12px;
+    cursor: pointer;
+}
+.SubmitAdAdDivForMobile:hover{
+    opacity: 0.8;
+}
+.toMyAccount{
+    display: inline !important; 
+}

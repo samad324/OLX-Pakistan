@@ -17,6 +17,7 @@ self.addEventListener('push', function (event) {
         body: body,
         icon : icon,
         vibrate: [200, 100, 200, 100, 200, 100, 200],
+        badge : notification.badge
         // tag: tag
       })
     );
@@ -46,10 +47,10 @@ self.addEventListener('push', function (event) {
             });
   
             if (client !== undefined) {
-              client.navigate(notification.data.url);
+              client.navigate("https://olxpakistanpwa.firebaseapp.com/src/chat/index.html");
               client.focus();
             } else {
-              clients.openWindow(notification.data.url);
+              clients.openWindow("https://olxpakistanpwa.firebaseapp.com/src/chat/index.html");
             }
             notification.close();
           })

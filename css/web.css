@@ -5,3 +5,7 @@
 .needReg{
     display: none !important;
 }
+.toMyAccount{
+    display: none;
+}
+.SubmitAdAdDivForMobile{display: none}

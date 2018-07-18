@@ -1,0 +1,18 @@
+input[type=file]{
+    height: 44px !important;
+}
+
+input[type=file]::-webkit-file-upload-button{
+    height: 30px !important
+}
+.m-auto{
+    margin: auto !important;
+}
+@media (max-width:340px){
+    input[type=file]{
+        width: 240px !important;
+    } 
+}
+.mobileDiv{
+    display: none;
+}

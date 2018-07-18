@@ -179,3 +179,9 @@ footer{
     border: 0.5px solid rgb(231, 231, 231);
     border-radius: 6px
 }
+.text-white{
+    color: #fff;
+}
+.icon:hover{
+    cursor: pointer;
+}
