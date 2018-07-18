@@ -25,15 +25,16 @@ exports.sendNotification = functions.firestore.document('/messages/{roomId}/mess
                 notification: {
                     title: `New Message From ${snapshot.name}`,
                     body: event.after.data().message,
-                    icon: snapshot.profileImg
+                    icon: snapshot.profileImg,
+                    click_action: "https://olxpakistanpwa.firebaseapp.com/src/chat/index.html"
                 }
             }
-            return admin.firestore().collection("users").doc(recieverId)
+            return admin.firestore().collection("users").doc(event.after.data().recieverId)
                 .get().then(reciever => {
-                    console.info("reciever" , reciever)
+                    console.info("reciever", reciever)
                     return admin.messaging().sendToDevice(reciever.data().token, payload);
                 })
-            
-            
+
+
         });
     })
