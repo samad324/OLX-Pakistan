@@ -10,5 +10,11 @@ function toSubmitAnAd() {
     
 }
 function toMyAccount(){
-    window.location = "src/dashboard/dashboard.html"
+    firebase.auth().onAuthStateChanged(function (user){
+        if(user){
+            window.location.href = "src/dashboard/dashboard.html"
+        }else{
+            window.location.href = "src/login/login.html"
+        }
+    })
 }

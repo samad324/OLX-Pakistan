@@ -1,0 +1,19 @@
+.logBtn , .submitBtn{
+display: none
+}
+.adDeteils{
+    height: 300px;
+    width: 100%;
+    margin-top: 40px;
+}
+.navBar{
+    width:  100% !important
+}
+.sliderDiv{
+    width: 92% !important;
+}
+@media (max-width : 380px){
+    .sliderDiv{
+        width: 92% !important;
+    } 
+}

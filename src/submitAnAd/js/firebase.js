@@ -65,6 +65,11 @@ function submitAnAdd(event) {
     let providence = document.getElementById("providence").value;
     let price = document.getElementById("price").value;
     let pics = document.getElementsByName("pics");
+    let submitBtn = document.getElementById("submitBtn");
+
+    submitBtn.innerHTML = `
+        <img src="../../images/loading.gif">
+    `
 
     let promises = uploadPic(pics);
     Promise.all(promises).then(function (picsUrl) {
@@ -75,7 +80,8 @@ function submitAnAdd(event) {
             providence: providence,
             price: price,
             pics: picsUrl,
-            adderId: currenntUser.uid
+            adderId: currenntUser.uid,
+            time : ((new Date).getTime()).toString()
         };
 
         firestore.collection(category).add(data)
@@ -87,6 +93,15 @@ function submitAnAdd(event) {
                         DocRef: DocRef.id
                     })
                 console.log("Data Added!!", DocRef)
+
+
+
+                adTitle.value = ""
+                category.value = ""
+                discription.value = ""
+                providence.value = ""
+                price.value = ""
+                submitBtn.innerHTML = "submit"
             })
     })
 

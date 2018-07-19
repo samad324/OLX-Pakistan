@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="../../css/web.css">
     <link rel="stylesheet" media="(max-width:785px)" href="../../css/mobile.css">
     <link rel="stylesheet" media="(min-width:786px)" href="../../css/web.css">
+    <link rel="stylesheet" media="(min-width:786px)" href="css/web.css">
+    <link rel="stylesheet" media="(max-width:785px)" href="css/mobile.css">
     <link rel="stylesheet" href="../../css/style (2).css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="../../images/icon.png" type="image/x-icon">
@@ -25,26 +27,40 @@
 
         <div class="d-flex flex-row">
             <div class="align-self-center">
-                <img src="../../images/icon.png" alt="OLX Pakistan - Free Classsified in Pakistan" class="icon">
+                <img src="../../images/icon.png" alt="OLX Pakistan - Free Classsified in Pakistan" onclick="toHome()" class="icon">
             </div>
             <div class="align-self-center ml-3 mobileDiv">
                 <h5>Pakistan's Largest Marketplace</h5>
             </div>
         </div>
-        <div class="d-flex flex-row ">
-            <div class="align-self-center mobileDiv">
-                <button class="btn btn-white" onclick="toreg()">
-                    <i class="fa fa-pencil-alt"></i>
-                    <span class="text-bold">Register</span>
+        <div class="d-flex flex-row m-3">
+            <div class="align-self-center logBtn">
+                <button class="btn btn-white" onclick="toLogin()" id="loginBtn">
+                    <span class="text-bold">Login</span>
                 </button>
             </div>
-            <div class="align-self-center ml-2">
-                <button class="btn btn-orange ml-2">
+            <div class="align-self-center ml-2 btn-submit" onclick="toSubmit()">
+                <button class="btn btn-orange ml-2 submitBtn">
                     <span class="text-bold">Submit an Ad</span>
+                </button>
+            </div>
+            <div class="align-self-center ml-2 toMyAccount">
+                <button class="btn btn-orange ml-2" onclick="toDashboard()">
+                    <div>
+                        <img src="../../images/account.png" class="">
+                    </div>
+                    <div>
+                        <span class="text-bold" onclick="toMyAccount()">Dashboard</span>
+                    </div>
+
                 </button>
             </div>
         </div>
 
+    </div>
+
+    <div class="SubmitAdAdDivForMobile d-flex flex-row justify-content-center" onclick="toSubmit()">
+        <h3 class="text-white align-self-center ">Submit An Ad</h3>
     </div>
 
 
@@ -53,25 +69,31 @@
 
 
 
-    <div class="container  m-auto mt-5">
+    <div class="container  sliderDiv m-auto mt-5">
         <div class="row">
             <div class="col-md-8 col-sm-12">
                 <div class="head border-grey">
-                    <h2 id="title mt-2"></h2>
-                    <p id="location"></p>
+                    <h3 id="adTitle" class="mt-2 ml-3"></h3>
+                    <p id="location" class="ml-3">
+                        
+                    </p>
                 </div>
-                <div id="slider" class="border-grey w-100 slide d-flex align-items-center">
+                <div id="slideImg" class="border-grey w-100 slide d-flex align-items-center">
                     <div class="d-flex  d-row justify-content-between w-100 m-auto">
-                        <div><button class="d-inline-block btns ml-2" onclick="next()">
-                            <i class="fa fa-angle-left"></i>
-                        </button></div>
-                        <div><button class="d-inline-block btns mr-2" onclick="back()">
-                            <i class="fa fa-angle-right"></i>
-                        </button></div>
+                        <div>
+                            <button class="d-inline-block btns" onclick="back()">
+                                <i class="fa fa-angle-left"></i>
+                            </button>
+                        </div>
+                        <div>
+                            <button class="d-inline-block btns" onclick="next()">
+                                <i class="fa fa-angle-right"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 col-sm-12 border-grey ">
+            <div class="col-md-4 col-sm-12 border-grey adDeteils">
 
             </div>
         </div>
@@ -109,7 +131,7 @@
 
 
 
-        
+
 
         <div class="mt-5 ml-2 d-inline-block w-30">
             <table>
@@ -156,6 +178,7 @@
         };
         firebase.initializeApp(config);
     </script>
+    <script src="../global.js"></script>
     <script src="js/script.js"></script>
 </body>
 

@@ -17,10 +17,10 @@
     margin-top: 50px !important;
 }
 
-#slider{
-    background-image:url(../../../images/icon.png);
+#slideImg{
     background-size: cover;
     background-position: center;
+    
 }
 .btns{
     background: rgba(0, 0, 0, 0);
@@ -33,4 +33,15 @@
 }
 .btns:hover{
     background-color: rgba(214, 214, 214, 0.479);
+}
+.col-sm-12{
+    padding: 0 !important;
+}
+.navBar{
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.btns{
+    padding: 0 !important
 }
