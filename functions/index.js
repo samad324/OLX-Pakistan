@@ -26,7 +26,6 @@ exports.sendNotification = functions.firestore.document('/messages/{roomId}/mess
                     title: `New Message From ${snapshot.name}`,
                     body: event.after.data().message,
                     icon: snapshot.profileImg, 
-                    badge : "../../images/icon.png"
                 }
             }
             return admin.firestore().collection("users").doc(event.after.data().recieverId)

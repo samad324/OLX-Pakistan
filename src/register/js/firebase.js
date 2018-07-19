@@ -33,7 +33,7 @@ function registerUser(event) {
 
     let btnSubmit = document.getElementById("btnSubmit");
     btnSubmit.innerHTML = `
-        <img src="images/loading.gif" style="width: 14px">
+        <img src="../../images/loading.gif" style="width: 14px">
     `
     let prom = uploadPic(img);
 

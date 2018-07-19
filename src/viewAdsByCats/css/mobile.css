@@ -21,4 +21,17 @@
 }
 .result{
     cursor: pointer;
+}  
+.btn-submit{
+    display: none
+}
+.result{
+    height: 100px
+}
+.price{
+    margin-top: 0;
+}
+.img{
+    width: 100%;
+    height: 90px;
 }

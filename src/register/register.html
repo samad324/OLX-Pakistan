@@ -27,7 +27,7 @@
 
         <div class="d-flex flex-row">
             <div class="align-self-center">
-                <img src="../../images/icon.png" alt="OLX Pakistan - Free Classsified in Pakistan" class="icon">
+                <img src="../../images/icon.png" alt="OLX Pakistan - Free Classsified in Pakistan" onclick="toHome()" class="icon">
             </div>
             <div class="align-self-center ml-3 mobileDiv">
                 <h5>Pakistan's Largest Marketplace</h5>
@@ -39,14 +39,10 @@
                     <span class="text-bold">Login</span>
                 </button>
             </div>
-            <div class="align-self-center ml-2">
-                <button class="btn btn-orange ml-2">
-                    <span class="text-bold">Submit an Ad</span>
-                </button>
-            </div>
         </div>
 
     </div>
+
 
     <div  class="m-5">
         <form onsubmit="return registerUser(event)">
@@ -60,7 +56,7 @@
             <input type="password" class="form-control" id="password">
             <span>Re-enter Password:</span>
             <input type="password" class="form-control" id="cPassword">
-            <button type="submit" class="btn btn-primary floar-right mt-3" id="btnSubmit">Register</button>
+            <button type="submit" class="btn btn-primary floar-right mt-3 float-right" id="btnSubmit">Register</button>
         </form>
     </div>
 

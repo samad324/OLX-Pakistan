@@ -16,8 +16,7 @@ self.addEventListener('push', function (event) {
       self.registration.showNotification(title, {
         body: body,
         icon : icon,
-        vibrate: [200, 100, 200, 100, 200, 100, 200],
-        badge : notification.badge
+        vibrate: [200, 100, 200, 100, 200, 100, 200]
         // tag: tag
       })
     );

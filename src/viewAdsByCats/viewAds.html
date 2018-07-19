@@ -27,7 +27,7 @@
 
         <div class="d-flex flex-row">
             <div class="align-self-center">
-                <img src="../../images/icon.png" alt="OLX Pakistan - Free Classsified in Pakistan" class="icon">
+                <img src="../../images/icon.png" alt="OLX Pakistan - Free Classsified in Pakistan" onclick="toHome()" class="icon">
             </div>
             <div class="align-self-center ml-3 mobileDiv">
                 <h5>Pakistan's Largest Marketplace</h5>
@@ -35,17 +35,32 @@
         </div>
         <div class="d-flex flex-row m-3">
             <div class="align-self-center logBtn">
-                <button class="btn btn-white" onclick="toLogin()">
+                <button class="btn btn-white" onclick="toLogin()" id="loginBtn">
                     <span class="text-bold">Login</span>
                 </button>
             </div>
-            <div class="align-self-center ml-2" onclick = "toSubmit()">
+            <div class="align-self-center ml-2 btn-submit" onclick = "toSubmit()">
                 <button class="btn btn-orange ml-2">
                     <span class="text-bold">Submit an Ad</span>
                 </button>
             </div>
+            <div class="align-self-center ml-2 toMyAccount">
+                <button class="btn btn-orange ml-2">
+                    <div>
+                        <img src="../../images/account.png" class="">
+                    </div>
+                    <div>
+                        <span class="text-bold" onclick="toMyAccount()">Dashboard</span>
+                    </div>
+
+                </button>
+            </div>
         </div>
 
+    </div>
+
+    <div class="SubmitAdAdDivForMobile d-flex flex-row justify-content-center" onclick="toSubmit()">
+        <h3 class="text-white align-self-center ">Submit An Ad</h3>
     </div>
 
 

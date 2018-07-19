@@ -17,33 +17,57 @@ firestore.collection(cat).get()
         doc.forEach(element => {
             console.log(doc.docs)
             console.log(element.data());
-            localStorage.setItem("adderId",element.data().adderId)
+            localStorage.setItem("adderId", element.data().adderId)
             let data = element.data()
             resultDiv.innerHTML += `
             <div class="container result mt-2 d-flex flex-row" id="${doc.docs[indexNo].id}" onclick="viewAd(event)">
             <div class="adImg d-flex">
-                <img src="${data.pics[0]}" class="w-80 align-self-center m-auto">
+                <img src="${data.pics[0]}" class="w-80 align-self-center m-auto img">
             </div>
             <div class="ml-4 justify-content-md-start justify-content-sm-center w-100">
                 <h5 id="title" class="mb-0">${data.adTitle}</h5>
                 <p class="text-muted mb-0">${data.category}</p>
-                <p class="text-muted">${data.providence}</p>
+                <p class="text-muted mb-0">${data.providence}</p>
                 <h5 class= "float-left price" >Rs.${data.price}</h5>
             </div>
             </div>
-            ` 
+            `
             indexNo++;
         });
     })
 
-    function toSubmit(){
-        window.location = "../submitAnAd/submitAnAd.html"
+function toSubmit() {
+    window.location = "../submitAnAd/submitAnAd.html"
+}
+
+
+
+function viewAd(event) {
+    let target = event.target.parentNode.parentNode;
+    localStorage.setItem("adToView", target.id);
+    window.location = "../viewAnAd/viewAd.html"
+}
+
+
+
+function toHome() {
+    window.location = "../../index.html"
+}
+
+
+firebase.auth().onAuthStateChanged(function (user) {
+    let btn = document.getElementById("loginBtn");
+
+    if (user) {
+        btn.style.display = "none"
     }
+})
 
 
+function toLogin(){
+    window.location = "../login/login.html"
+}
 
-    function viewAd(event){
-        let target = event.target.parentNode.parentNode;
-        localStorage.setItem("adToView",target.id);
-        window.location = "../viewAnAd/viewAd.html"
-    }
+function toSubmit(){
+    window.location = "../submitAnAd/submitAnAd.html"
+}
