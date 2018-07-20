@@ -22,7 +22,8 @@ firestore.collection("messages").where("recieverId", "==", cUser)
             chats.add(element.doc.id);
             firestore.collection('users').doc(element.doc.data().senderId).get()
                 .then(doc => {
-
+                    debugger
+                    if(!doc.data()) return 
                     previosChatsDiv.innerHTML += `
                         <div class="w-80 m-auto chatDiv d-flex flex-row" id=${element.doc.id} onclick = "startChat(event)" >
                         <div class="align-self-center">

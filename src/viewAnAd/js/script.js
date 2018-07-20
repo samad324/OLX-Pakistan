@@ -20,6 +20,9 @@ firestore.collection(cat).doc(adToView).get()
     .then(function (snapshot) {
         console.log(snapshot.data());
         data = snapshot.data();
+        let index = data.time.indexOf("G");
+        console.log(index)
+        data.time = data.time.slice(0,index)
 
         let silder = document.getElementById("slideImg");
         silder.style.backgroundImage = `url(${data.pics[0]})`
@@ -31,7 +34,7 @@ firestore.collection(cat).doc(adToView).get()
         let location = document.getElementById("location");
         location.innerHTML += `
         <img src="../../images/room.png" style="width:16px">
-        <span>${data.providence}</span>
+        <span>${data.providence},${data.city}</span>
         <span style="border:1px solid #414141" class="ml-2 mr-2"></span>
         <span>${data.time} </span>
         `
@@ -40,23 +43,24 @@ firestore.collection(cat).doc(adToView).get()
 
 
 let currentSlide = 0;
-let silder = document.getElementById("silder");
+let silder = document.getElementById("slideImg");
 
 
 function next() {
-    if (currentSlide == (data.pics.length - 1)) {
+    if (currentSlide == (data.pics.length)) {
 
     } else {
-        silder.style.backgroundImage = `url(${data.pics[currentSlide]})`;
+        silder.style.backgroundImage = `url(${data.pics[currentSlide+1]})`;
         currentSlide++;
     }
 }
 
 function back() {
-    if(currentSlide == 0){
+    debugger
+    if(currentSlide <= 0){
 
     }else{
-        silder.style.backgroundImage = `url(${data.pics[currentSlide]})`
+        silder.style.backgroundImage = `url(${data.pics[currentSlide-1]})`
         currentSlide--
     }
 

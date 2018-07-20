@@ -66,9 +66,10 @@ function submitAnAdd(event) {
     let price = document.getElementById("price").value;
     let pics = document.getElementsByName("pics");
     let submitBtn = document.getElementById("submitBtn");
+    let city = document.getElementById("city").value;
 
     submitBtn.innerHTML = `
-        <img src="../../images/loading.gif">
+        <img src="../../images/loading.gif" style= "width:16px">
     `
 
     let promises = uploadPic(pics);
@@ -78,10 +79,11 @@ function submitAnAdd(event) {
             category: category,
             discription: discription,
             providence: providence,
+            city : city,
             price: price,
             pics: picsUrl,
             adderId: currenntUser.uid,
-            time : ((new Date).getTime()).toString()
+            time : (new Date).toString()
         };
 
         firestore.collection(category).add(data)
