@@ -71,11 +71,11 @@
 
     <div class="container  sliderDiv m-auto mt-5">
         <div class="row">
-            <div class="col-md-8 col-sm-12">
+            <div class="col-md-9 col-sm-12">
                 <div class="head border-grey">
                     <h3 id="adTitle" class="mt-2 ml-3"></h3>
                     <p id="location" class="ml-3">
-                        
+
                     </p>
                 </div>
                 <div id="slideImg" class="border-grey w-100 slide d-flex align-items-center">
@@ -93,13 +93,56 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 col-sm-12 border-grey adDeteils">
 
+
+            <div class="col-md-3 col-sm-12 border-grey adDeteils">
+                <div class="d-flex justify-content-center priceDiv">
+                    <h1 class="align-self-center" id="price"></h1>
+                </div>
+                <div class="detailsDiv d-flex  flex-column">
+                    <div class="ml-4 mt-4 d-flex flex-row">
+                        <div>
+                                <img id="userImg" class="userImg">
+                        </div>
+                        
+                        <div class=" ml-2 mt-3">
+                            <p id="userName" class="m-0 font-weight-bold "></p>
+                            <small class="m-0 chatWithThisUser" onclick="chat()">Chat With this User?</small>
+                        </div>
+                    </div>
+
+                    <div class="ml-5 mt-5">
+                        <img src="../../images/phone.png" style="width: 26px">
+                        <span id="phone" class="font-weight-bold"></span>
+                    </div>
+                    <div class="ml-1 mt-5">
+                        <table>
+                            <tr>
+                                <td></td>
+                                <th>Safety Tips for Buyers</th>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>Meet seller at a safe location</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Check the item before you buy</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Pay only after collecting item</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <button class="btn btn-primary" onclick="chat()">chat</button>
+  <div class="contianer">
+      <p class="pl-4 pt-5" id="dis"></p>
+  </div>
 
 
 

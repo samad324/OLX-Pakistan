@@ -47,15 +47,17 @@
     <div  class="m-5">
         <form onsubmit="return registerUser(event)">
             <span>Full Name:</span>
-            <input type="text" class="form-control" id="name">
+            <input type="text" class="form-control" id="name" required>
             <span>Email:</span>
-            <input type="email" class="form-control" id="email" ><br>
+            <input type="email" class="form-control" id="email" required >
+            <span>Mobile Number:</span>
+            <input type="number" class="form-control" id="number" required>
             <span>Upload Image</span><br>
             <input type="file" class="uploadImg" id="imgs" accept="image/*"><br>
             <span>Password:</span>
-            <input type="password" class="form-control" id="password">
+            <input type="password" class="form-control" id="password" required>
             <span>Re-enter Password:</span>
-            <input type="password" class="form-control" id="cPassword">
+            <input type="password" class="form-control" id="cPassword" required>
             <button type="submit" class="btn btn-primary floar-right mt-3 float-right" id="btnSubmit">Register</button>
         </form>
     </div>

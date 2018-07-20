@@ -21,7 +21,7 @@ function registerUser(event) {
     let cPassword = document.getElementById("cPassword").value;
     let name = document.getElementById("name").value;
     let img = document.getElementById("imgs").files[0];
-
+    let number = document.getElementById('number').value;   
 
 
 
@@ -55,6 +55,7 @@ function registerUser(event) {
                      data = {
                         email: email,
                         name: name,
+                        number: number,
                         profileImg: "https://firebasestorage.googleapis.com/v0/b/olxpakistanpwa.appspot.com/o/download.png?alt=media&token=953c657b-151a-46a7-b946-b61a71bc7a0f"
                     }
                 }
@@ -62,6 +63,7 @@ function registerUser(event) {
                      data = {
                         email: email,
                         name: name,
+                        number: number,
                         profileImg: resProm[0]
                     }
                 }

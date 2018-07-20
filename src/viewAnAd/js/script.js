@@ -39,6 +39,23 @@ firestore.collection(cat).doc(adToView).get()
         <span>${data.time} </span>
         `
 
+        let price = document.getElementById("price");
+        price.innerHTML = `Rs.${data.price}`
+
+        let userImg = document.getElementById("userImg");
+        let userName = document.getElementById("userName");
+        let phoneNum = document.getElementById("phone")
+
+        firestore.collection("users").doc(data.adderId)
+            .get().then(doc => {
+                userImg.src = doc.data().profileImg;
+                userName.innerHTML = doc.data().name;
+                phoneNum.innerHTML = doc.data().number;
+            })
+        
+
+        let discription = document.getElementById("dis");
+        discription.innerHTML = data.discription
     })
 
 
@@ -73,3 +90,5 @@ function back() {
 function chat(){
     window.location = "../chat/index.html";
 }
+
+

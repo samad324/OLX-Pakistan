@@ -38,11 +38,17 @@
 .col-sm-12{
     padding: 0 !important;
 }
-.navBar{
-    width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-}
+
 .btns{
     padding: 0 !important
+}
+.m-auto{
+    margin: auto !important;
+}
+.chatWithThisUser{
+    color: #0069D9;
+}
+.chatWithThisUser:hover{
+    cursor: pointer;
+    font-size: 14px
 }
