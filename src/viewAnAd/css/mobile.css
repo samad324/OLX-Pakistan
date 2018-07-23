@@ -17,3 +17,11 @@ display: none
         width: 92% !important;
     } 
 }
+.userdetails{
+    margin-top: 10px;
+    width: 96%
+}
+.contactWithUser{
+    width: 130px;
+    margin-left: 0 !important;
+}

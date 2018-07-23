@@ -23,7 +23,7 @@ firestore.collection("messages").where("recieverId", "==", cUser)
             firestore.collection('users').doc(element.doc.data().senderId).get()
                 .then(doc => {
                     debugger
-                    if(!doc.data()) return 
+                    if (!doc.data()) return
                     previosChatsDiv.innerHTML += `
                         <div class="w-80 m-auto chatDiv d-flex flex-row" id=${element.doc.id} onclick = "startChat(event)" >
                         <div class="align-self-center">
@@ -60,23 +60,30 @@ function startChat(event) {
     if (event.target.nodeName == "SPAN" || event.target.nodeName == "H5" || event.target.nodeName == "IMG") {
         let target = (event.target.parentNode.parentNode).id;
         console.log(target);
-        
+
         chatBox.id = target;
+        debugger
         firestore.collection("messages").doc(target)
             .get().then(doc => {
-                if(doc.data().senderId !== localStorage.getItem("user")){
-                    localStorage.setItem("adderId" , doc.data().senderId)
-                }else if(doc.data().recieverId !== localStorage.getItem("user")){
-                    localStorage.setItem("adderId" , doc.data().recieverId)
+                if (doc.data().senderId !== localStorage.getItem("user")) {
+                    localStorage.setItem("adderId", doc.data().senderId)
+                } else if (doc.data().recieverId !== localStorage.getItem("user")) {
+                    localStorage.setItem("adderId", doc.data().recieverId)
                 }
-                initailizeChatListner(target);
+                if (chatInitialed == false) {
+                    initailizeChatListner(target);
+                    chatInitialed = true;
+                }
+
             })
-        
+
     }
 
 
 
 }
+
+
 
 
 
@@ -487,10 +494,10 @@ function sendMessage(event) {
     debugger
     if (chatBox.id) {
         firestore.collection("messages").doc(chatBox.id)
-            .collection("message").doc( ((new Date).getTime()).toString() ).set({
+            .collection("message").doc(((new Date).getTime()).toString()).set({
                 message: messageToSend,
                 senderId: senderId,
-                recieverId : recieverId,
+                recieverId: recieverId,
                 time: (new Date).toString()
             }).then(docRef => {
                 if (chatInitialed == false) {
@@ -508,7 +515,21 @@ function sendMessage(event) {
             recieverId: recieverId
         }).then(docRef => {
             chatBox.id = docRef.id;
-            sendMessage();
+
+            firestore.collection("messages").doc(docRef.id)
+                .collection("message").doc(((new Date).getTime()).toString()).set({
+                    message: messageToSend,
+                    senderId: senderId,
+                    recieverId: recieverId,
+                    time: (new Date).toString()
+                }).then(docRef => {
+                    if (chatInitialed == false) {
+
+                        initailizeChatListner(chatBox.id);
+                        chatInitialed = true
+
+                    }
+                });
 
 
         })
@@ -610,6 +631,9 @@ function initailizeChatListner(chatId) {
                          `
 
                     }
+
+                    var objDiv = document.getElementById("messageDiv");
+                    objDiv.scrollTop = objDiv.scrollHeight; 
 
 
                 })
