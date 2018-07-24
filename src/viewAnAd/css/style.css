@@ -76,3 +76,9 @@
     border: 1px solid rgb(230, 230, 230);
     min-height: 140px;
 }
+.btns:active{
+    outline-color: #FF7A01
+}
+.btns:focus{
+    outline-color: #FF7A01
+}

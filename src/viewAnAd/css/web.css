@@ -23,7 +23,7 @@
 }
 @media (max-width:992px){
     .userdetails{
-        padding: 8px;
+        padding: 8px !important;
         margin: 4px
     }
     .user{
@@ -43,4 +43,10 @@
     .cautions{
         margin: 4px !important
     }
+    .phoneNum{
+        padding-left: 8px !important;
+    }
+}
+.phoneNum{
+    padding-left: 48px;
 }

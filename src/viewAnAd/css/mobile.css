@@ -19,9 +19,60 @@ display: none
 }
 .userdetails{
     margin-top: 10px;
-    width: 96%
 }
 .contactWithUser{
     width: 130px;
     margin-left: 0 !important;
+}
+.phoneNum{
+    padding-left: 0px !important;
+    margin-right: 0 !important;
+    margin-left: 0px !important;
+}
+.cautions{
+    margin-bottom: 40px;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+.EndDiv{
+    margin-top: 100px;
+    margin-bottom: 100px !important; 
+}
+.priceDiv{
+    padding-top: 24px;
+    padding-bottom: 24px 
+}
+
+.userdetails{
+    padding-top: 24px;
+    padding-bottom: 24px 
+}
+.discriptionDiv{
+    margin-top: 150px !important
+}
+
+@media(max-width: 416px){
+.wanaSale{
+    font-size: 18px
+}
+.postAd{
+    font-size: 14px
+}
+.arrow{
+    height:  36px ;
+}
+}
+body{
+    overflow-x: hidden
+}
+@media (max-width: 274px){
+    .wanaSale{
+        font-size: 14px
+    }
+}
+
+@media (max-width: 217px){
+    .wanaSale{
+        font-size: 12px
+    }
 }

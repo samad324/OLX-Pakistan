@@ -14,9 +14,9 @@ function toSubmit() {
 function toDashboard() {
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
-            window.location.href = "src/dashboard/dashboard.html"
+            window.location.href = "../dashboard/dashboard.html"
         } else {
-            window.location.href = "src/login/login.html"
+            window.location.href = "../login/login.html"
         }
     })
 }
