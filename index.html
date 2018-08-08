@@ -5,14 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#A3B500">
+    <meta name="apple-mobile-web-app-title" content="OLX">
+    <link rel="apple-touch-icon" href="images/icons/icon-144x144.png">
+    <meta name="msapplication-TileImage" content="images/icons/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#A3B500">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" media="(max-width: 785px)" href="css/mobile.css">
-    <link rel="stylesheet" href="css/style (2).css">
+    <link rel="stylesheet" href="css/style(2).css">
     <link rel="stylesheet" media="(min-width: 786px)" href="css/web.css">
     <link rel="shortcut icon" href="images/icon.png" type="image/x-icon">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
-        crossorigin="anonymous">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
     <link rel="manifest" href="manifest.json">
     <title>Free Classsified in Plakistan</title>
 </head>
@@ -45,12 +51,12 @@
                     </button>
                 </div>
                 <div class="align-self-center ml-2 toMyAccount">
-                    <button class="btn btn-orange ml-2">
+                    <button class="btn btn-orange ml-2 myBTn" onclick="toDashboard()">
                         <div>
                             <img src="images/account.png" class="">
                         </div>
                         <div>
-                            <span class="text-bold" onclick="toMyAccount()">Dashboard</span>
+                            <span class="text-bold">Dashboard</span>
                         </div>
 
                     </button>
@@ -83,11 +89,11 @@
                             <i class="fa fa-search"></i>
                         </span>
                     </div>
-                    <input type="text" class="form-control" placeholder="Search An Ad" id="seaarchInp" aria-label="Username" aria-describedby="basic-addon1">
+                    <input type="text" class="form-control" placeholder="Search An Ad" list="list" id="searchInp" aria-label="Username" aria-describedby="basic-addon1" oninput="search()">
                 </div>
 
                 <div class="ml-3">
-                    <button class="btn btn-primary w-130 mr-2">
+                    <button class="btn btn-primary w-130 mr-2" onclick="viewAdBySearch(event)">
                         <i class="fa fa-search mr-2"></i>
                         <span class="font-bold">Search</span>
                     </button>
@@ -102,6 +108,9 @@
 
             </div>
         </div>
+
+
+        <datalist id="list"></datalist>
 
 
         <div class="categories mt-4">
@@ -326,9 +335,6 @@
             };
             firebase.initializeApp(config);
         </script>
-        <script src="js/bootstrap.bundle.js"></script>
-        <script src="js/bootstrap.bundle.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
         <script src="js/script.js"></script>
         <script src="js/firestore.js"></script>
 </body>

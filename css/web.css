@@ -31,3 +31,6 @@ input[type=file]::-webkit-file-upload-button:hover{
     cursor: pointer;
     opacity: 0.8;
 }
+.myBTn{
+    display: none !important;
+}

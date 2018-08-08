@@ -11,11 +11,9 @@ console.log("firestore", firestore);
 
 let currenntUser;
 
-auth.signInWithEmailAndPassword("a.s324889@gmail.com", "droid.razr")
-    .then(function (user) {
-        console.log("user>>>", user);
-        currenntUser = user.user;
-    })
+auth.onAuthStateChanged(user => {
+    if(user) currenntUser = user.uid
+})
 
 
 
@@ -82,28 +80,20 @@ function submitAnAdd(event) {
             city : city,
             price: price,
             pics: picsUrl,
-            adderId: currenntUser.uid,
+            adderId: currenntUser,
             time : (new Date).toString()
         };
 
         firestore.collection(category).add(data)
             .then(function (DocRef) {
-                firestore.collection("ads").doc((Math.random()).toString()).collection(category)
-                    .add({
-                        adTitle: adTitle,
-                        category: category,
-                        DocRef: DocRef.id
-                    })
                 console.log("Data Added!!", DocRef)
-
-
-
                 adTitle.value = ""
                 category.value = ""
                 discription.value = ""
                 providence.value = ""
                 price.value = ""
                 submitBtn.innerHTML = "submit"
+                window.location = "../dashboard/dashboard.html"
             })
     })
 

@@ -6,7 +6,7 @@ function toSubmit() {
         if (user) {
             window.location.href = "../submitAnAd/submitAnAd.html"
         } else {
-            window.location.href = "../login.html"
+            window.location.href = "../login/login.html"
         }
     })
 

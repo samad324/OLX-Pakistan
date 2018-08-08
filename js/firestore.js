@@ -16,6 +16,7 @@ function viewit(event) {
 
 
 let cUser;
+
 firebase.auth().onAuthStateChanged(function (user) {
   if (user) {
     cUser = user;
@@ -28,26 +29,29 @@ firebase.auth().onAuthStateChanged(function (user) {
       console.log('token >>>> ', token);
       firestore.collection("users").doc(user.uid)
         .update({
-          token : token
+          token : token,
+          lastToken : (new Date()).toString()
         })
     }).catch(function (err) { // Happen if user deney permission
       console.log('Unable to get permission to notify.', err);
     });
-  } else {
-    // User is signed out.
-    // ...
   }
-});
+})
 
 
 function toLogin() {
 
-  debugger
-  if (localStorage.getItem('user')) {
-    window.location = "src/dashboard/dashboard.html";
-  } else {
-    window.location = 'src/login/login.html';
-  }
+  
+  firebase.auth().onAuthStateChanged(user => {
+
+    if (user) {
+      window.location = "src/dashboard/dashboard.html";
+    } else {
+      window.location = 'src/login/login.html';
+    }
+
+  })
+
 }
 
 
@@ -77,7 +81,7 @@ function toLogin() {
 //       .get()
 //       .then(doc => {
 //         doc.forEach(elem => {
-//           debugger
+//           
 
 //           resolve(elem.data())
 
@@ -91,7 +95,7 @@ function toLogin() {
 // Promise.all(prom).then(function (res) {
 //   console.log(res)
 //   // res.forEach(elem => {
-//   //   debugger
+//   //  
 //   //   if (elem.empty == false) {
 //   //     console.log(elem.data())
 //   //   }
@@ -102,7 +106,7 @@ function toLogin() {
 
 //   firestore.collection(doc).get()
 //     .then(function (snapshot) {
-//       debugger
+//       
 //       snapshot.forEach( elem =>  {
 //         console.log(doc,"====>>", elem.data());
 //       })
@@ -161,5 +165,93 @@ if ('serviceWorker' in navigator) {
 
 
 
+function search() {
+  let toSearch = (document.getElementById("searchInp").value).toLowerCase();
+  let list = document.getElementById("list");
+  list.innerHTML = "";
 
+  for (var i = 0; i < promises.length; i++) {
+
+      // for (var j = 0; j < promises[i].Catagory.length; j++) {
+      //     let category = (promises[i].Catagory).toLowerCase();
+
+      //     if (toSearch[0] == category[j]) {
+      //         for (var l = 1; l <= toSearch.length; l++) {
+      //             if (toSearch == category.slice(j, l)) {
+      //                 list.innerHTML += `<option value="${category}" id="${promises[i].adId}">${category}</option>`
+      //                 break;
+      //             }
+      //         }
+      //     }
+      // }
+
+      for (var k = 0; k < promises[i].adTitle.length; k++) {
+          let title = (promises[i].adTitle).toLowerCase();
+          if (toSearch[0] == title[k]) {
+              for (var m = 1; m <= title.length; m++) {
+                  if (toSearch == title.slice(k, m)) {
+                      list.innerHTML += `<option value="${title}" title="${promises[i].category}" id="${promises[i].adId}">${title}</option>`
+                      break;
+                  }
+              }
+          }
+
+      }
+
+
+
+  }
+
+
+
+
+
+}
+
+
+
+function viewAdBySearch(event){
+  event.preventDefault();
+
+  let search = document.getElementById("searchInp").value;
+
+  let datalist = document.getElementById("list");
+  
+  let addToView;
+  let catsToView ;
+
+  for(let i = 0; i < datalist.childNodes.length; i++){
+      if(search == datalist.childNodes[i].value){
+          addToView = datalist.childNodes[i].id;
+          catsToView = datalist.childNodes[i].title;
+          break;
+      }
+  }
+
+  localStorage.setItem("adToView",addToView);
+  localStorage.setItem("cat",catsToView);
+  console.log(addToView, catsToView)
+  window.location.href = "src/ad/ad.html"
+}
+
+let searches = ["Property For Sell", "Property For Rent", "Cars", "Bikes", "Electronics", "Mobiles", "Jobs", "Services", "Business", "Furniture", "Animals", "Books", "Fashion", "Kids"];
+
+
+let promises = [];
+searches.forEach(Element => {
+  let index = 0;
+  firestore.collection(Element)
+      .get().then(snapshot => {
+          if (snapshot.empty == false) {
+              snapshot.forEach((doc) => {
+                  let data = doc.data();
+                  data.adId = snapshot.docs[index].id;
+                  index++;
+                  promises.push(data)
+                  console.log(data)
+              })
+          }
+      })
+  index = 0;
+})
 

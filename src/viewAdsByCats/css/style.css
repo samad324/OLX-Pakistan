@@ -13,7 +13,10 @@
 .result{
     cursor: pointer;
 }
-.img{
-    width: 100%;
+.dImg{
+    width: 98px;
     height: 90px;
+}
+.m-auto{
+    margin: auto !important;
 }

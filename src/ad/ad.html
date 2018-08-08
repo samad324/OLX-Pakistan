@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/web.css">
+    <link rel="stylesheet" media="(max-width:785px)" href="../../css/mobile.css">
+    <link rel="stylesheet" media="(min-width:786px)" href="../../css/web.css">
+    <link rel="stylesheet" media="(min-width:786px)" href="../css/forWeb.css">
+    <link rel="stylesheet" media="(max-width:785px)" href="../css/forMobile.css">
+    <link rel="stylesheet" href="../../css/style(2).css">
+    <link rel="stylesheet" href="../css/generalStyle.css">
+    <link rel="shortcut icon" href="../../images/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../../css/font-awesome.css">
+    <link rel="stylesheet" href="../../css/font-awesome.min.css">
+    <title>Free Classified in Pakistan</title>
+</head>
+
+<body>
+
+
+    <div class="d-flex flex-row justify-content-between navBar container">
+
+        <div class="d-flex flex-row">
+            <div class="align-self-center">
+                <img src="../../images/icon.png" alt="OLX Pakistan - Free Classsified in Pakistan" onclick="toHome()" class="icon" id="icon">
+            </div>
+            <div class="align-self-center ml-3 mobileDiv">
+                <h5>Pakistan's Largest Marketplace</h5>
+            </div>
+        </div>
+        <div class="d-flex flex-row m-3">
+            <div class="align-self-center logBtn">
+                <button class="btn btn-white" onclick="toLogin()" id="loginBtn">
+                    <span class="text-bold">Login</span>
+                </button>
+            </div>
+            <div class="align-self-center ml-2 btn-submit" onclick="toSubmit()">
+                <button class="btn btn-orange ml-2 submitBtn">
+                    <span class="text-bold">Submit an Ad</span>
+                </button>
+            </div>
+            <div class="align-self-center ml-2 toMyAccount">
+                <button class="btn btn-orange ml-2" onclick="toDashboard()">
+                    <div>
+                        <img src="../../images/account.png" class="">
+                    </div>
+                    <div>
+                        <span class="text-bold">Dashboard</span>
+                    </div>
+
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="SubmitAdAdDivForMobile d-flex flex-row justify-content-center" onclick="toSubmit()">
+        <h3 class="text-white align-self-center ">Submit An Ad</h3>
+    </div>
+
+
+
+
+
+
+
+    <div class="container  sliderDiv m-auto mt-5">
+        <div class="row">
+            <div class="col-md-9 col-sm-12">
+                <div class="head border-grey d-flex flex-row justify-content-between w-10">
+                    <div>
+                        <h3 id="adTitle" class="mt-2 ml-3"></h3>
+                        <p id="location" class="ml-3"></p>
+                    </div>
+                    <div class="align-self-center d-flex mr-2 flex-end btn-heart" onclick="saveIt()">
+                        <span class="d-inline-block">
+                            <i class="fa fa-heart heart"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="border-grey p-2 w-100">
+                    <button class="btn btn-save w-100" id="btnSave" onclick="saveIt()">
+                        <i class="fa fa-heart"></i>
+                        <span class="text-bold fnt-16"> Save It</span>
+                    </button>
+                </div>
+                <div id="slideImg" class="border-grey w-100 slide d-flex align-items-center">
+                    <div class="d-flex  d-row justify-content-between w-100 m-auto">
+                        <div>
+                            <button class="d-inline-block btns" onclick="back()">
+                                <i class="fa fa-angle-left"></i>
+                            </button>
+                        </div>
+                        <div>
+                            <button class="d-inline-block btns" onclick="next()">
+                                <i class="fa fa-angle-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-3 col-sm-12  adDeteils">
+                <div class="d-flex justify-content-center priceDiv border-grey">
+                    <h1 class="align-self-center" id="price"></h1>
+                </div>
+                <div class="detailsDiv d-flex  flex-column ">
+
+                    <div class="userdetails border-grey justify-content-center d-flex flex-row ">
+                        <div>
+                            <img id="userImg" class="userImg">
+                        </div>
+
+                        <div class="user ">
+                            <p id="userName" class="m-0 font-weight-bold userName"></p>
+                            <small class="m-0 chatWithThisUser" id="chatWithThisUser" data-toggle="modal" data-target=".bd-example-modal-lg" onclick="chat()">Chat With this User?</small>
+                        </div>
+                    </div>
+
+                    <div class="py-4  m-2 border-grey phoneNum">
+                        <div class="m-auto contactWithUser">
+                            <img src="../../images/phone.png" style="width: 26px">
+                            <span id="phone" class="font-weight-bold"></span>
+                        </div>
+                    </div>
+                    <div class="pl-1 py-3 m-2 border-grey cautions">
+                        <table>
+                            <tr>
+                                <td></td>
+                                <th>Safety Tips for Buyers</th>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>Meet seller at a safe location</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>Check the item before you buy</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Pay only after collecting item</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="container discriptionDiv">
+        <p class="pl-4 m-0 pt-3" id="dis"></p>
+        <p class="m-4" style="color:rgb(215,215,215)">When you call, don't forget to mention that you found this ad on OLX.com.pk I do not wish to be contacted by telemarketers
+            or representatives of any other website</p>
+    </div>
+
+
+
+
+    <div class="container mt-5 EndDiv ">
+        <div class="d-flex align-items-center flex-column ">
+            <h3 class="mt-1 wanaSale">Do you have something to sell?</h3>
+            <h5 class="mt-2 postAd">Post your ad FOR FREE on OLX</h5>
+            <div class="d-flex">
+                <img src="../../images/arrow-leftt.png" style="height:64px" class="arrow">
+                <button class="btn btn-orange mt-4 mx-1">
+                    <span class="text-bold">Submit an Ad</span>
+                </button>
+                <img src="../../images/arrow-right.png" style="height:64px" class="arrow">
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <div class="chatBox">
+
+                    <div class="reciverDetals d-flex flex-row">
+                        <div class="mt-1 ml-2">
+                            <img id="recieverPic">
+                        </div>
+                        <div class="d-flex flex-column ml-2 mt-3 align-content-center">
+                            <h5 id="recieverName"></h5>
+                        </div>
+                    </div>
+
+                    <div class="messages d-flex flex-column messageDiv" id="messageDiv"></div>
+                    <form onsubmit="sendMessage(event)">
+                        <div class="d-flex flex-row inp">
+                            <div class="messInp align-self-center">
+                                <input type="text" class="form-control" id="input">
+                            </div>
+                            <div>
+                                <button class="sendBtn align-self-center" type="submit">
+                                    <img src="../dashboard/images/baseline_send_white_18dp.png">
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <footer class=" w-100 d-flex d-row footer">
+        <div class="container mt-5 w-70">
+            <table class="first">
+                <tr>
+                    <td rowspan="4">
+                        <img src="../../images/logo.png" class="icon ml-5 ">
+                    </td>
+                    <td>Location maps</td>
+                    <td>Terms of Use</td>
+                    <td>Who we are</td>
+                </tr>
+                <tr>
+                    <td>Popular searches</td>
+                    <td>Help and Contact us</td>
+                    <td>join OLX</td>
+                </tr>
+                <tr>
+                    <td>Sitemap</td>
+                    <td></td>
+                    <td>Happy OLXers</td>
+                </tr>
+            </table>
+
+        </div>
+
+
+
+
+
+
+        <div class="mt-5 ml-2 d-inline-block w-30">
+            <table>
+                <tr>
+                    <th colspan="2" class="pl-3">Contact Us</th>
+                </tr>
+                <tr>
+                    <td>
+                        <i class="fa fa-envelope"></i>
+                    </td>
+                    <td>help@olx.com.pk</td>
+                </tr>
+                <tr>
+                    <td>
+                        <i class="fa fa-phone"></i>
+                    </td>
+                    <td>080010101</td>
+                </tr>
+                <tr>
+                    <td>
+                        <i class="fa fa-business"></i>
+                    </td>
+                    <td>Business Packeges</td>
+                </tr>
+            </table>
+        </div>
+    </footer>
+
+
+
+
+    <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+    <script>
+        var config = {
+            apiKey: "AIzaSyD5ALJ3Pvfn86ybcI6-uWUuKn8xBL7Fweo",
+            authDomain: "olxpakistanpwa.firebaseapp.com",
+            databaseURL: "https://olxpakistanpwa.firebaseio.com",
+            projectId: "olxpakistanpwa",
+            storageBucket: "olxpakistanpwa.appspot.com",
+            messagingSenderId: "573103718935"
+        };
+        firebase.initializeApp(config);
+
+
+        
+    </script>
+
+
+
+    <script src="../dashboard/js/jquery.min.js"></script>
+    <script src="../dashboard/js/tether.min.js"></script>
+    <script src="../dashboard/js/bootstrap.min.js"></script>
+    <script src="../global.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

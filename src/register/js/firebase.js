@@ -21,7 +21,7 @@ function registerUser(event) {
     let cPassword = document.getElementById("cPassword").value;
     let name = document.getElementById("name").value;
     let img = document.getElementById("imgs").files[0];
-    let number = document.getElementById('number').value;   
+    let number = document.getElementById('number').value;
 
 
 
@@ -43,7 +43,7 @@ function registerUser(event) {
         firebase.auth().createUserWithEmailAndPassword(email, password).then(function (res) {
             console.log(res);
             localStorage.setItem("user", res.user.uid)
-            btnSubmit.innerHTML = "Register";
+            
             var user = firebase.auth().currentUser;
 
             user.updateProfile({
@@ -51,8 +51,8 @@ function registerUser(event) {
             }).then(function () {
 
                 let data;
-                if (resProm[0] == undefined) { 
-                     data = {
+                if (resProm[0] == undefined) {
+                    data = {
                         email: email,
                         name: name,
                         number: number,
@@ -60,7 +60,7 @@ function registerUser(event) {
                     }
                 }
                 else {
-                     data = {
+                    data = {
                         email: email,
                         name: name,
                         number: number,
@@ -71,7 +71,9 @@ function registerUser(event) {
 
                 firestore.collection("users").doc(res.user.uid).set(data)
                     .then(function (docRef) {
-                        window.location = "../../index.html"
+                        localStorage.setItem("userData", JSON.stringify(user.data()));
+                        btnSubmit.innerHTML = "Register";
+                        window.location = "../../index.html";
                     })
             })
                 .catch(function (error) {

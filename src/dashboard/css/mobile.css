@@ -12,7 +12,8 @@
         width: 80% 
     }
     .btnsAd{
-        display: none
+        display: none !important;
+        width: 0  !important
     }
 }
 
@@ -20,7 +21,76 @@
     border-radius: 2px;
     width: 100%;
     height: 50%;
+    height: 100%;
 }
 .btnBig{
     display: none !important
+}
+.btnsAd{
+    width: 0 !important;
+}
+.adsCard{
+    margin: auto !important;
+}
+@media(max-width:18.1rem){
+    .adsCard{
+        width : 98% !important;  
+    }
+}
+@media(max-width:340px){
+    .btn-white{
+        width: 80px !important;
+        padding-left: 8px !important;
+        padding-right: 8px !important;
+    }.nameOfAd{
+        font-size: 14px
+    }
+    .signOutIcon{
+        display:  none !important
+    }.port-item{
+        padding: 20px !important;
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+        padding-bottom: 0 !important
+    }
+}
+@media(max-width:256px){
+    .nameOfAd{
+        font-size: 10px
+    }.card-img-top{
+        height: 160px !important;
+    }.viewBtn{
+        width: 100% !important
+    }
+}
+@media(max-width:410px){
+    .chatDiv{
+        width: 100% !important
+    }
+}
+
+@media(max-width:330px){
+    .chatDiv span{
+        font-size: 10px
+    }
+    .chatDiv h5{
+        font-size: 14px
+    }
+}
+.viewBtn{
+    width: 100% !important
+}
+
+.card-text{
+    height: 100px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+@media(max-width:217px){
+    .chatDiv span{
+        font-size: 8px
+    }
+    .chatDiv h5{
+        font-size: 12px
+    }
 }
